@@ -1,5 +1,4 @@
 venv/
-db.sqlite3
 test.py
 __pycache__/
 .git/
