@@ -1,0 +1,16 @@
+{% extends 'stepik/base.html' %}
+
+
+{% block content %}
+    {% for decision in decisions %}
+        <div class="decision">
+            {% if decision.published_date %}
+                <div class="date">
+                    {{ decision.published_date}}
+                </div>
+            {% endif %}
+            <h3>{{ decision.author }}</h3>
+            <p>{{ decision.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+
+    {% for answer in answers %}
+        <div class="answer">
+            {% if answer.date_public %}
+                <div class="date">
+                    {{ answer.date_public}}
+                </div>
+            {% endif %}
+            <h3>{{ answer.author }}</h3>
+            <p>{{ answer.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

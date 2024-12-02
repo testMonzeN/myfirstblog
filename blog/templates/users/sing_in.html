@@ -1,0 +1,18 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <p>Войдите в аккаунт! Если его у вас его нету: <a href="register">Регистрация</a></p>
+    <form method="POST" class="sing_in-form">
+        {% csrf_token %}
+        <label for="username">Login:</label>
+        <input type="text" id="username" name="username" required>
+
+        </p><label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Войти</button>
+    </form>
+    {% for message in messages %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+{% endblock %}
