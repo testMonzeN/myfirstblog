@@ -1,0 +1,29 @@
+{% extends 'cards/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">BLOG</h5>
+        <p class="card-text">ТУТ ТЫ НАЙДЕШЬ ОТВЕТ НА СВОЙ СУПЕР ЖИЗНЕННЫЙ ВОПРОС!!!!11!!1!!!!!</p>
+        <a href="{% url 'teleport_blog' %}" class="btn btn-primary">Go!</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">ОТВЕТЫ ПО КУРСУ PYTHON</h5>
+        <p class="card-text">А ТУТ ТУПОЙ ШКОЛЬНИК СМОЖЕТ НАЙТИ РЕШЕНИЕ ЗАДАЧИ ПО КУРСУ PYTHON</p>
+           {% if user %}
+                <a href="{% url 'update_tasks' %}" class="btn btn-primary">Обновить таски</a>
+            {% endif %}
+        <a href="{% url 'teleport_stepik' %}" class="btn btn-primary">Go!</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

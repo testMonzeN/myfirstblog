@@ -1,0 +1,24 @@
+{% extends 'stepik/base.html' %}
+
+
+{% block content %}
+    <div class="task">
+        <div class="date">
+            {{ task.published_date }}
+        </div>
+        <h1><a href="{% url 'task_detail' pk=task.pk %}">{{ task.title }}</a></h1>
+        <p>{{ task.text|linebreaksbr }}</p>
+    </div>
+
+    {% for decision in decisions %}
+        <div class="decision">
+            {% if decision.published_date %}
+                <div class="date">
+                    {{ decision.published_date}}
+                </div>
+            {% endif %}
+            <h3>{{ decision.author }}</h3>
+            <p>{{ decision.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
