@@ -1,13 +1,11 @@
 {% extends 'blog/base.html' %}
 
-
-
 {% block content %}
     <div class="task">
         <div class="date">
             {{ task.published_date }}
         </div>
-        <h1><a href="{% url 'py_task_detail' pk=task.pk %}">{{ task.title }}</a></h1>
+        <h1><a href="{% url 'js_task_detail' pk=task.pk %}">{{ task.title }}</a></h1>
         <p>{{ task.text|linebreaksbr }}</p>
     </div>
 

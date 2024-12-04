@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">PYTHON</h5>
+        <p class="card-text">А ТУТ ТУПОЙ ШКОЛЬНИК СМОЖЕТ НАЙТИ РЕШЕНИЕ ЗАДАЧИ ПО КУРСУ PYTHON</p>
+          {% if user %}
+            <a href="{% url 'py_update_tasks' %}" class="btn btn-primary">Обновить таски</a>
+          {% endif %}
+        <a href="{% url 'py_task_list' %}" class="btn btn-primary">Go!</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">JAVASCRIPT</h5>
+        <p class="card-text">А ТУТ ТУПОЙ ШКОЛЬНИК СМОЖЕТ НАЙТИ РЕШЕНИЕ ЗАДАЧИ ПО КУРСУ JS</p>
+           {% if user %}
+                <a href="{% url 'js_update_tasks' %}" class="btn btn-primary">Обновить таски</a>
+            {% endif %}
+        <a href="{% url 'js_task_list' %}" class="btn btn-primary">Go!</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -19,8 +19,9 @@ def teleport_blog(request):
         return redirect('post_list')
     else:
         return redirect('sing_in')
+
 def teleport_stepik(request):
     if request.user.is_authenticated:
-        return redirect('task_list')
+        return redirect('main')
     else:
         return redirect('sing_in')
