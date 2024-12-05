@@ -19,5 +19,7 @@
             <h3>{{ decision.author }}</h3>
             <p>{{ decision.text|linebreaksbr }}</p>
         </div>
+    {% empty %}
+        <h2>No comments here yet :(</h2>
     {% endfor %}
 {% endblock %}

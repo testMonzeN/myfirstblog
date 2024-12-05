@@ -3,7 +3,14 @@
 
 {% block content %}
 
-<div class="row">
+  <div class="row">
+    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'cards' %}">HOME</a></li>
+      <li class="breadcrumb-item active" aria-current="page">STEPIK</li>
+    </ol>
+  </nav>
+
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">

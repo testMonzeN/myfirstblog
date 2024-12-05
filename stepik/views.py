@@ -22,12 +22,14 @@ def task_list(request):
     )
     else:
         return redirect('sing_in')
+
 def task_detail(request, pk):
     task = get_object_or_404(Taskpy, pk=pk)
     decisions = Decisionpy.objects.filter(task=task)
     return render(request, 'stepik/task_detail.html',
-                  {'task': task,
-                            'decisions': decisions
+                  {
+                      'task': task,
+                      'decisions': decisions
                    }
                 )
 def decision_new(request):
