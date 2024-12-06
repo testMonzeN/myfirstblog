@@ -16,7 +16,7 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
-        <a class="btn btn-default" href="{% url 'py_decision_new' %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'answer_new' %}"><span class="glyphicon glyphicon-pencil"></span></a>
 
     </div>
     {% for answer in answers %}

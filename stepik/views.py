@@ -38,7 +38,7 @@ def decision_new(request):
                 decision.author = request.user
                 decision.published_date = timezone.now()
                 decision.save()
-                return redirect('task_list')
+                return redirect('py_task_list')
         else:
             form = DecisionForm()
         return render(request, 'stepik/decision_edit.html', {'form': form})
@@ -97,7 +97,7 @@ def js_decision_new(request):
                 decision.author = request.user
                 decision.published_date = timezone.now()
                 decision.save()
-                return redirect('task_list')
+                return redirect('js_task_list')
         else:
             form = DecisionForm()
         return render(request, 'stepik/js_decision_edit.html', {'form': form})
