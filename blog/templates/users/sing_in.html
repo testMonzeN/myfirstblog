@@ -1,8 +1,8 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <p>Войдите в аккаунт! Если его у вас его нету: <a href="register">Регистрация</a></p>
-    <form method="POST" class="sing_in-form">
+    <p>Войдите в аккаунт! Если его у вас его нету: <a href="{% url 'register' %}">Регистрация</a></p>
+    <form method="POST" class="reg-form">
         {% csrf_token %}
         <label for="username">Login:</label>
         <input type="text" id="username" name="username" required>
