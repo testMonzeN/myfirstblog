@@ -16,6 +16,9 @@
         </div>
         <h1><a href="{% url 'js_task_detail' pk=task.pk %}">{{ task.title }}</a></h1>
         <p>{{ task.text|linebreaksbr }}</p>
+
+        <a class="btn btn-default" href="{% url 'js_decision_new' %}"><span class="glyphicon glyphicon-pencil"></span></a>
+
     </div>
 
     {% for decision in decisions %}

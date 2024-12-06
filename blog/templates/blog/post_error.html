@@ -16,7 +16,9 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
+        <a class="btn btn-default" href="{% url 'py_decision_new' %}"><span class="glyphicon glyphicon-pencil"></span></a>
 
+    </div>
     {% for answer in answers %}
         <div class="answer">
             {% if answer.date_public %}
@@ -27,6 +29,8 @@
             <h3>{{ answer.author }}</h3>
             <p>{{ answer.text|linebreaksbr }}</p>
         </div>
+    {% empty %}
+        <h2>No comments here yet :(</h2>
     {% endfor %}
-    </div>
+
 {% endblock %}

@@ -7,21 +7,12 @@ from django.contrib import messages
 
 # Create your views here.
 def cards_list(request):
-    if request.user.is_authenticated:
-        return render(request, 'cards/cards.html', {
-            'user': request.user.is_superuser
-        })
-    else:
-        return redirect('sing_in')
+    return render(request, 'cards/cards.html', {
+        'user': request.user.is_superuser
+    })
 
 def teleport_blog(request):
-    if request.user.is_authenticated:
-        return redirect('post_list')
-    else:
-        return redirect('sing_in')
+    return redirect('post_list')
 
 def teleport_stepik(request):
-    if request.user.is_authenticated:
-        return redirect('main')
-    else:
-        return redirect('sing_in')
+    return redirect('main')

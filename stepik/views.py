@@ -13,15 +13,12 @@ def main(request):
 
 
 def task_list(request):
-    if request.user.is_authenticated:
-        tasks = Taskpy.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-        return render(request, 'stepik/task_list.html', {
-            'tasks': tasks,
-            'user': request.user.is_superuser
-        }
-    )
-    else:
-        return redirect('sing_in')
+    tasks = Taskpy.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'stepik/task_list.html', {
+        'tasks': tasks,
+        'user': request.user.is_superuser
+    })
+
 
 def task_detail(request, pk):
     task = get_object_or_404(Taskpy, pk=pk)
@@ -33,17 +30,21 @@ def task_detail(request, pk):
                    }
                 )
 def decision_new(request):
-    if request.method == "POST":
-        form = DecisionForm(request.POST)
-        if form.is_valid():
-            decision = form.save(commit=False)
-            decision.author = request.user
-            decision.published_date = timezone.now()
-            decision.save()
-            return redirect('task_list')
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = DecisionForm(request.POST)
+            if form.is_valid():
+                decision = form.save(commit=False)
+                decision.author = request.user
+                decision.published_date = timezone.now()
+                decision.save()
+                return redirect('task_list')
+        else:
+            form = DecisionForm()
+        return render(request, 'stepik/decision_edit.html', {'form': form})
+
     else:
-        form = DecisionForm()
-    return render(request, 'stepik/decision_edit.html', {'form': form})
+        return redirect('sing_in')
 
 def py_task_new(request):
     url = f'https://api.github.com/repos/testMonzeN/Practic/contents/'
@@ -72,15 +73,12 @@ def py_task_new(request):
 #                                                #
 ##################################################
 def js_task_list(request):
-    if request.user.is_authenticated:
-        tasks = Taskjs.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-        return render(request, 'stepik/js_task_list.html', {
-            'tasks': tasks,
-            'user': request.user.is_superuser
-        }
-    )
-    else:
-        return redirect('sing_in')
+    tasks = Taskjs.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'stepik/js_task_list.html', {
+        'tasks': tasks,
+        'user': request.user.is_superuser
+    })
+
 def js_task_detail(request, pk):
     task = get_object_or_404(Taskjs, pk=pk)
     decisions = Decisionjs.objects.filter(task=task)
@@ -90,17 +88,21 @@ def js_task_detail(request, pk):
                    }
                 )
 def js_decision_new(request):
-    if request.method == "POST":
-        form = DecisionForm(request.POST)
-        if form.is_valid():
-            decision = form.save(commit=False)
-            decision.author = request.user
-            decision.published_date = timezone.now()
-            decision.save()
-            return redirect('task_list')
+    if request.user.is_authenticated:
+
+        if request.method == "POST":
+            form = DecisionForm(request.POST)
+            if form.is_valid():
+                decision = form.save(commit=False)
+                decision.author = request.user
+                decision.published_date = timezone.now()
+                decision.save()
+                return redirect('task_list')
+        else:
+            form = DecisionForm()
+        return render(request, 'stepik/js_decision_edit.html', {'form': form})
     else:
-        form = DecisionForm()
-    return render(request, 'stepik/js_decision_edit.html', {'form': form})
+        return redirect('sing_in')
 
 def js_task_new(request):
     url = f'https://api.github.com/repos/testMonzeN/Practic/contents/'
