@@ -1,7 +1,7 @@
 from .models import Taskjs, Decisionjs, Taskpy, Decisionpy
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
-from .form import DecisionForm
+from .form import DecisionForm, DecisionFormJs
 import requests, re
 from django.contrib.auth.models import User
 
@@ -91,7 +91,7 @@ def js_decision_new(request):
     if request.user.is_authenticated:
 
         if request.method == "POST":
-            form = DecisionForm(request.POST)
+            form = DecisionFormJs(request.POST)
             if form.is_valid():
                 decision = form.save(commit=False)
                 decision.author = request.user
@@ -99,7 +99,7 @@ def js_decision_new(request):
                 decision.save()
                 return redirect('js_task_list')
         else:
-            form = DecisionForm()
+            form = DecisionFormJs()
         return render(request, 'stepik/js_decision_edit.html', {'form': form})
     else:
         return redirect('sing_in')
