@@ -1,4 +1,5 @@
 from .models import Taskjs, Decisionjs, Taskpy, Decisionpy
+from django.core.paginator import Paginator
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from .form import DecisionForm, DecisionFormJs
@@ -10,13 +11,16 @@ def main(request):
         'user': request.user.is_superuser
     })
 
-
-
 def task_list(request):
-    tasks = Taskpy.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    tasks = Taskpy.objects.all()
+    paginator = Paginator(tasks, 5)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     return render(request, 'stepik/task_list.html', {
-        'tasks': tasks,
-        'user': request.user.is_superuser
+        'tasks': page_obj,
+        'page_obj': page_obj,
+        'user': request.user.is_superuser,
     })
 
 
@@ -73,9 +77,16 @@ def py_task_new(request):
 #                                                #
 ##################################################
 def js_task_list(request):
-    tasks = Taskjs.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    #tasks = Taskjs.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    tasks = Taskpy.objects.all()
+    paginator = Paginator(tasks, 5)
+
+    page_number = request.GET.get('page')
+    tasks_in_page = paginator.get_page(page_number)
+
     return render(request, 'stepik/js_task_list.html', {
-        'tasks': tasks,
+        'tasks': tasks_in_page,
+        'page_obj': tasks_in_page,
         'user': request.user.is_superuser
     })
 

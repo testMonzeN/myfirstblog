@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 
+from django.core.paginator import Paginator
 from .models import Post, Answer
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -8,15 +9,24 @@ from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .forms import PostForm, AnswerForm
 from django.contrib import messages
 
+
+
+
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    object_list = Post.objects.all()  # Получаем все объекты
+    paginator = Paginator(object_list, 10)  # Показывать 10 объектов на странице
+
+    page_number = request.GET.get('page')  # Получаем номер страницы из GET-параметров
+    page_obj = paginator.get_page(page_number)  # Получаем объекты для текущей страницы
+
+    #posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {
-        'posts': posts,
+        'posts': page_obj,
+        'page_obj': page_obj
         }
     )
 
 def post_error(request, pk):
-
         post = get_object_or_404(Post, pk=pk)
         answers = Answer.objects.filter(post=post)
         return render(request, 'blog/post_error.html',
