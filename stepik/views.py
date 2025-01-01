@@ -77,8 +77,7 @@ def py_task_new(request):
 #                                                #
 ##################################################
 def js_task_list(request):
-    #tasks = Taskjs.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    tasks = Taskpy.objects.all()
+    tasks = Taskjs.objects.all()
     paginator = Paginator(tasks, 5)
 
     page_number = request.GET.get('page')
@@ -90,14 +89,17 @@ def js_task_list(request):
         'user': request.user.is_superuser
     })
 
+
 def js_task_detail(request, pk):
     task = get_object_or_404(Taskjs, pk=pk)
     decisions = Decisionjs.objects.filter(task=task)
     return render(request, 'stepik/js_task_detail.html',
-                  {'task': task,
-                            'decisions': decisions
+                  {
+                      'task': task,
+                      'decisions': decisions
                    }
                 )
+
 def js_decision_new(request):
     if request.user.is_authenticated:
 

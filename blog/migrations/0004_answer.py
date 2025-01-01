@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('data_create', models.DateTimeField(default=django.utils.timezone.now)),
                 ('date_public', models.DateTimeField(blank=True, null=True)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.post')),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.js.post')),
             ],
         ),
     ]
