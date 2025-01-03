@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'cards' %}">HOME</a></li>
+        <li class="breadcrumb-item active" aria-current="page">BLOG</li>
+    </ol>
+</nav>
+
+<div id="post-container">
+    {% include 'blog/post_list.html' %}
+</div>
+
+<div id="pagination-links">
+    {% include 'blog/paginator.html' %}
+</div>
+
+{% endblock %}
+
+
+

@@ -21,7 +21,7 @@ def post_list(request):
     page_obj = paginator.get_page(page_number)
 
     return JsonResponse({
-        'html': render_to_string(request = request, template_name='blog/post_list.html',
+        'html': render_to_string(request = request, template_name='blog/blog_page.html',
                                  context={
                                      'posts': page_obj,
                                      'page_obj': page_obj,
@@ -38,11 +38,11 @@ def post_list1(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'blog/post_list.html', {
+    return render(request, 'blog/blog_page.html', {
         'posts': page_obj,
         'page_obj': page_obj
-        }
-    )
+    }
+                  )
 
 def post_error(request, pk):
     post = get_object_or_404(Post, pk=pk)
