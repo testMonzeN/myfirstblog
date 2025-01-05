@@ -17,4 +17,11 @@
             });
     }
 
-loadPage(1);
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        loadPage(1);
+
+        document.getElementById('pagination-links').addEventListener('click', function(e) {
+            console.log('111111111111111')
+})})
