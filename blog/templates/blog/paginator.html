@@ -2,9 +2,11 @@
   <a href="?page=1" id="first-page">&laquo; Первая</a>
   <a href="?page={{ page_obj.previous_page_number }}" id="prev-page">Предыдущая</a>
 {% endif %}
+
 <span class="current">
     Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
 </span>
+
 {% if page_obj.has_next %}
     <a href="?page={{ page_obj.next_page_number }}" id="next-page">Следующая</a>
     <a href="?page={{ page_obj.paginator.num_pages }}" id="last-page">Последняя &raquo;</a>
