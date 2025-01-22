@@ -11,7 +11,27 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 
+def post_list_ajax(request):
+    object_list = Post.objects.all()
+    paginator = Paginator(object_list, 2)
 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    html = render_to_string('blog/post_list.html', {
+        'posts': page_obj
+    }, request=request)
+
+    pag = render_to_string('blog/pagination.html', {
+        'page_next': page_obj.next_page_number() if page_obj.has_next() else None,
+        'page_previous': page_obj.previous_page_number() if page_obj.has_previous() else None,
+        'page_current': page_obj.number
+    }, request=request)
+
+    return JsonResponse({
+        'html': html,
+        'pagination': pag
+    })
 
 def post_list(request):
     object_list = Post.objects.all()
@@ -20,30 +40,14 @@ def post_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return JsonResponse({
-        'html': render_to_string(request = request, template_name='blog/blog_page.html',
-                                 context={
-                                     'posts': page_obj,
-                                     'page_obj': page_obj,
-                                     'page_number': page_number
-                                 }
-                                 )
-    })
-
-
-def post_list1(request):
-    object_list = Post.objects.all()
-    paginator = Paginator(object_list, 2)
-
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-
     return render(request, 'blog/blog_page.html', {
         'posts': page_obj,
-        'page_obj': page_obj
-    }
-                  )
+        'page_obj': page_obj,
 
+        'page_next': page_obj.next_page_number() if page_obj.has_next() else None,
+        'page_previous': page_obj.previous_page_number() if page_obj.has_previous() else None,
+        'page_current': page_obj.number
+    })
 def post_error(request, pk):
     post = get_object_or_404(Post, pk=pk)
     answers = Answer.objects.filter(post=post)

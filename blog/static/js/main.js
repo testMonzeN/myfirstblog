@@ -1,29 +1,21 @@
-function loadPage(page) {
-    fetch('blog/?page=' + page)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Ошибка загрузки страницы');
-            }
-            return response.text();
-        })
-        .then(html => {
-            try {
-                const paginationLinks = document.getElementById('pagination-links');
-                if (paginationLinks) {
-                    paginationLinks.innerHTML = html;
-                } else {
-                    console.error('нету элемента с id "pagination-links"');
-                }
-            } catch (err) {
-                console.log('error - ', err);
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        });
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('start')
-    loadPage(1);
+    const paginationLinks = document.querySelectorAll('#pagination-links div');
+    console.log('start');
+
+    paginationLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const pageNumber = this.getAttribute('data-page');
+            fetch('/blog/ajax_page/?' + new URLSearchParams({
+                page: pageNumber
+            }))
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('post-container').innerHTML = data.html;
+                console.log(data.pagination.page_next)
+            })
+            .catch(error => console.error('Ошибка:', error));
+        });
+    });
 });
