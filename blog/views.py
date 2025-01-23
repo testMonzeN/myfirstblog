@@ -1,3 +1,5 @@
+from queue import PriorityQueue
+
 from django.contrib.auth.decorators import login_required
 
 from django.core.paginator import Paginator
@@ -7,7 +9,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .forms import PostForm, AnswerForm
-from django.contrib import messages
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 
@@ -25,12 +26,15 @@ def post_list_ajax(request):
     pag = render_to_string('blog/pagination.html', {
         'page_next': page_obj.next_page_number() if page_obj.has_next() else None,
         'page_previous': page_obj.previous_page_number() if page_obj.has_previous() else None,
-        'page_current': page_obj.number
+        'page_current': page_obj.number,
+        'page_end': page_obj.paginator.num_pages,
+        'page_has_next': page_obj.has_next,
+        'page_has_previous': page_obj.has_previous
     }, request=request)
 
     return JsonResponse({
         'html': html,
-        'pagination': pag
+        'paginator': pag
     })
 
 def post_list(request):
@@ -46,8 +50,13 @@ def post_list(request):
 
         'page_next': page_obj.next_page_number() if page_obj.has_next() else None,
         'page_previous': page_obj.previous_page_number() if page_obj.has_previous() else None,
-        'page_current': page_obj.number
+        'page_current': page_obj.number,
+        'page_end': page_obj.paginator.num_pages,
+        'page_has_next': page_obj.has_next,
+        'page_has_previous': page_obj.has_previous
     })
+
+
 def post_error(request, pk):
     post = get_object_or_404(Post, pk=pk)
     answers = Answer.objects.filter(post=post)

@@ -1,9 +1,9 @@
-{% if page_obj.has_previous %}
-    <div data-page="{{ page_previous }}" id="previous_page">ПРЕДЫДУЩАЯ СТРАНИЦА</div>
+<span>Страница {{ page_current }} из {{ page_end }}</span>
+
+{% if page_has_next %}
+    <div data-page="{{ page_next }}">СЛЕДУЮЩАЯ СТРАНИЦА</div>
 {% endif %}
 
-<span>Страница {{ page_current }} из {{ page_obj.paginator.num_pages }}</span>
-
-{% if page_obj.has_next %}
-    <div data-page="{{ page_next }}" id="next_page">Следующая страница</div>
+{% if page_has_previous %}
+    <div data-page="{{ page_previous }}" >ПРЕДЫДУЩАЯ СТРАНИЦА</div>
 {% endif %}
