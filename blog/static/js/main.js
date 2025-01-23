@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const paginationLinks = document.querySelectorAll('#pagination-links div');
     console.log('start');
+    const paginationLinks = document.querySelectorAll('#pagination-links div');
+    console.log('connect with paginationLinks');
 
     paginationLinks.forEach(link => {
         link.addEventListener('click', function(event) {
@@ -13,11 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }))
 
             .then(response => response.json())
-            .then(data => {
-                document.getElementById('post-container').innerHTML = data.html;
-                document.getElementById('pagination-links').innerHTML = data.paginator;
-            })
-            .catch(error => console.error('Ошибка:', error));
+                .then(data => {
+                    document.getElementById('post-container').innerHTML = data.html;
+                    document.getElementById('pagination-links').innerHTML = data.paginator;
+                    console.log('data update!');
+                })
+                .catch(error => console.error('Ошибка:', error));
         });
     });
 });
