@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('start');
     const paginationLinks = document.querySelectorAll('#pagination-links div');
-    console.log('connect with paginationLinks');
 
     paginationLinks.forEach(link => {
         link.addEventListener('click', function(event) {
