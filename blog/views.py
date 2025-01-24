@@ -1,7 +1,4 @@
-from queue import PriorityQueue
-
 from django.contrib.auth.decorators import login_required
-
 from django.core.paginator import Paginator
 from .models import Post, Answer
 from django.contrib.auth.models import User
