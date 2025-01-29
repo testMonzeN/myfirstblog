@@ -1,9 +1,9 @@
-<span>Страница {{ page_current }} из {{ page_end }}</span>
-
-{% if page_has_next %}
-    <div data-page="{{ page_next }}">СЛЕДУЮЩАЯ СТРАНИЦА</div>
+{% if page_has_previous %}
+    <div data-page="{{ page_previous }}" class="pag pag-button">ПРЕДЫДУЩАЯ СТРАНИЦА</div>
 {% endif %}
 
-{% if page_has_previous %}
-    <div data-page="{{ page_previous }}" >ПРЕДЫДУЩАЯ СТРАНИЦА</div>
+<span class="pag-info">Страница {{ page_current }} из {{ page_end }}</span>
+
+{% if page_has_next %}
+    <div data-page="{{ page_next }}" class="pag pag-button">СЛЕДУЮЩАЯ СТРАНИЦА</div>
 {% endif %}

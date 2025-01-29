@@ -13,8 +13,11 @@
     {% include 'blog/post_list.html' %}
 </div>
 
+
 <div class="step-links" id="pagination-links">
-    {% include 'blog/pagination.html' %}
+    {% if pag_status %}
+        {% include 'blog/pagination.html' %}
+    {% endif %}
 </div>
 
 {% endblock %}

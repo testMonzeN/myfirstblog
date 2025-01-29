@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from requests import request
+
 from .models import Post, Answer
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -8,6 +10,9 @@ from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .forms import PostForm, AnswerForm
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+
+
+
 
 def post_list_ajax(request):
     object_list = Post.objects.all()
@@ -31,7 +36,7 @@ def post_list_ajax(request):
 
     return JsonResponse({
         'html': html,
-        'paginator': pag
+        'paginator': pag,
     })
 
 def post_list(request):
@@ -50,7 +55,8 @@ def post_list(request):
         'page_current': page_obj.number,
         'page_end': page_obj.paginator.num_pages,
         'page_has_next': page_obj.has_next,
-        'page_has_previous': page_obj.has_previous
+        'page_has_previous': page_obj.has_previous,
+        'pag_status': True
     })
 
 

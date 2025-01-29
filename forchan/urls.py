@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from search.views import search_ajax
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('search/', include("search.urls")),
     path('blog/', include('blog.urls')),
     path('stepik/', include('stepik.urls')),
     path('', include('cards.urls')),
