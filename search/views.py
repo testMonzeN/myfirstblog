@@ -12,8 +12,6 @@ def search_ajax(request):
     object_taskpy_list = Taskpy.objects.filter(title__iregex=request.GET.get('q'))
     object_taskjs_list = Taskjs.objects.filter(title__iregex=request.GET.get('q'))
 
-
-
     lst = list(chain(object_post_list, object_taskpy_list, object_taskjs_list))
 
     paginator = Paginator(lst, 5)

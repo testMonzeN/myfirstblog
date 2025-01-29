@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             document.getElementById('post-container').innerHTML = data.html;
                             document.getElementById('pagination-links').innerHTML = data.paginator;
                         })
-                        .catch(error => console.error('Ошибка:', error));
+                        .catch(error => console.error('Ошибка:', error))
 
 
 

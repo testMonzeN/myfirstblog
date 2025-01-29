@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     document.body.addEventListener('click', function(event) {
         const target = event.target.closest('.pag');
