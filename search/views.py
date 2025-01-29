@@ -4,20 +4,17 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse
 from blog.models import Post
 from stepik.models import Taskpy, Taskjs
+from itertools import chain
 
 
 def search_ajax(request):
-    lst = []
     object_post_list = Post.objects.filter(title__iregex=request.GET.get('q'))
     object_taskpy_list = Taskpy.objects.filter(title__iregex=request.GET.get('q'))
     object_taskjs_list = Taskjs.objects.filter(title__iregex=request.GET.get('q'))
 
-    for item in object_post_list:
-        lst.append(item)
-    for item in object_taskjs_list:
-        lst.append(item)
-    for item in object_taskpy_list:
-        lst.append(item)
+
+
+    lst = list(chain(object_post_list, object_taskpy_list, object_taskjs_list))
 
     paginator = Paginator(lst, 5)
 
