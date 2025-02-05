@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h1>Результаты поиска для "{{ query }}"</h1>
+
+<div id="search-container">
+    {% include 'search/post_list.html' with posts=page_obj %}
+</div>
+
+<div id="search-pag-links">
+    {% include 'search/pagination_search.html' %}
+</div>
+
+{% endblock %}

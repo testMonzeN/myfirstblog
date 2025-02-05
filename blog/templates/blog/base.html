@@ -17,8 +17,8 @@
     <nav class="navbar rounded-0">
         <div class="logo">Karadev House</div>
             <div class="search-container" id="id_search-container">
-                <form action="{% url 'search_ajax' %}" method="get">
-                    <input id="search_text_id" type="search" type="text" name='q' class="search_text" value="" placeholder="Поиск..." />
+                <form action="{% url 'search' %}" method="get">
+                    <input id="search_text_id" type="search" name="q" class="search_text" value="{{ query }}" placeholder="Поиск..." />
                     <button type="submit" class="search_btn" id="search_id">🔍</button>
                 </form>
             </div>
@@ -37,7 +37,7 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">{% block script %}{% endblock %}</script>
-<script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/search.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
