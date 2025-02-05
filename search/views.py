@@ -19,6 +19,8 @@ def search_ajax(request):
     query = request.GET.get('q', '')
     all_object = perform_search(query)
 
+    print(all_object)
+
     paginator = Paginator(all_object, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -44,6 +46,7 @@ def search_ajax(request):
 def search(request):
     query = request.GET.get('q', '')
     all_object = perform_search(query)
+
 
     paginator = Paginator(all_object, 5)
     page_number = request.GET.get('page')
