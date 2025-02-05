@@ -8,12 +8,11 @@ from itertools import chain
 from django.urls import reverse
 
 
-
-
 def perform_search(query):
     object_post_list = Post.objects.filter(title__iregex=query)
     object_taskpy_list = Taskpy.objects.filter(title__iregex=query)
     object_taskjs_list = Taskjs.objects.filter(title__iregex=query)
+
     return list(chain(object_post_list, object_taskpy_list, object_taskjs_list))
 
 def search_ajax(request):
@@ -59,7 +58,7 @@ def search(request):
         'page_end': page_obj.paginator.num_pages,
         'page_has_next': page_obj.has_next,
         'page_has_previous': page_obj.has_previous,
-        'query': query,  # Передаём поисковый запрос в шаблон
+        'query': query,
     })
 
 def global_search(request):

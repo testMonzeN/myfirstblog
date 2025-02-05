@@ -17,7 +17,7 @@
     <nav class="navbar rounded-0">
         <div class="logo">Karadev House</div>
             <div class="search-container" id="id_search-container">
-                <form action="{% url 'search' %}" method="get">
+                <form action="{% url 'global_search' %}" method="get">
                     <input id="search_text_id" type="search" name="q" class="search_text" value="{{ query }}" placeholder="Поиск..." />
                     <button type="submit" class="search_btn" id="search_id">🔍</button>
                 </form>

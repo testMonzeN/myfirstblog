@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
 }
 
 .navbar {
@@ -8,57 +9,100 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #333;
-
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-links li a {
     text-decoration: none;
     color: #fff;
-    transition: color 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #00bfff;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
 }
 
 .nav-links li a:hover {
     color: #00bfff;
+    transform: translateY(-2px);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
 }
 
 .search-container {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .search-container input {
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    outline: none;
+    font-size: 1rem;
+    background-color: #444;
+    color: #fff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-container input:focus {
+    background-color: #555;
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
 }
 
 .search-container button {
-    padding: 0.5rem;
+    padding: 0.5rem 1.5rem;
     border: none;
     background-color: #00bfff;
     color: white;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
-    margin-left: 0.5rem;
-    transition: background-color 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .search-container button:hover {
     background-color: #007bbf;
+    transform: scale(1.05);
+}
+
+.search-container button:active {
+    transform: scale(0.95);
 }
