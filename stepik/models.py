@@ -1,3 +1,4 @@
+from django.shortcuts import resolve_url
 from django.utils import timezone
 from django.db import models
 from django.conf import settings
@@ -20,6 +21,9 @@ class Taskpy(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return resolve_url('py_task_detail', pk=self.pk)
+
 class Decisionpy(models.Model):
     task = models.ForeignKey(Taskpy, on_delete=models.CASCADE)
 
@@ -33,6 +37,8 @@ class Decisionpy(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
+
+
 
 class Taskjs(models.Model):
     title = models.CharField(max_length=200)
@@ -50,6 +56,8 @@ class Taskjs(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return resolve_url('js_task_detail', pk=self.pk)
 
 class Decisionjs(models.Model):
     task = models.ForeignKey(Taskjs, on_delete=models.CASCADE)

@@ -1,7 +1,10 @@
+from django.urls import reverse
+
 import django.contrib.auth.handlers.modwsgi
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
+from django.shortcuts import resolve_url
 from django.utils import timezone
 
 class Post(models.Model):
@@ -18,6 +21,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return resolve_url('post_error', pk=self.pk)
 
 class Answer(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

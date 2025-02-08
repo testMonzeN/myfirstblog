@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from .form import DecisionForm, DecisionFormJs
 import requests, re
 from django.http import JsonResponse
+from forchan.urls import *
 from django.contrib.auth.models import User
 
 def main(request):
