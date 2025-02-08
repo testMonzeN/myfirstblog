@@ -19,9 +19,7 @@ def search_ajax(request):
     query = request.GET.get('q', '')
     all_object = perform_search(query)
 
-    print(all_object)
-
-    paginator = Paginator(all_object, 1)
+    paginator = Paginator(all_object, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -48,13 +46,14 @@ def search(request):
     all_object = perform_search(query)
 
 
-    paginator = Paginator(all_object, 1)
+    paginator = Paginator(all_object, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'search/search_page_list.html', {
         'posts': page_obj,
         'page_obj': page_obj,
+
         'page_next': page_obj.next_page_number() if page_obj.has_next() else None,
         'page_previous': page_obj.previous_page_number() if page_obj.has_previous() else None,
         'page_current': page_obj.number,
