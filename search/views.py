@@ -8,15 +8,15 @@ from blog.models import Post
 from stepik.models import Taskpy, Taskjs
 from itertools import chain
 from django.urls import reverse
-
+from django.db.models import Q
 from blog.views import post_error
 from stepik.views import task_detail, js_task_detail
 
 
 def perform_search(query):
-    object_post_list = Post.objects.filter(title__iregex=query)
-    object_taskpy_list = Taskpy.objects.filter(title__iregex=query)
-    object_taskjs_list = Taskjs.objects.filter(title__iregex=query)
+    object_post_list = Post.objects.filter(Q(title__iregex=query) | Q(text__iregex=query))
+    object_taskpy_list = Taskpy.objects.filter(Q(title__iregex=query) | Q(text__iregex=query))
+    object_taskjs_list = Taskjs.objects.filter(Q(title__iregex=query) | Q(text__iregex=query))
 
     return list(chain(object_post_list, object_taskpy_list, object_taskjs_list))
 
@@ -74,18 +74,6 @@ def global_search(request):
     return redirect(f'{reverse("search")}?q={query}')
 
 
-def search_details(request, pk):
-    query = request.GET.get('q', '')
 
-    post = Post.objects.filter(title__iregex=query, pk=pk).first()
-    taskpy = Taskpy.objects.filter(title__iregex=query, pk=pk).first()
-    taskjs = Taskjs.objects.filter(title__iregex=query, pk=pk).first()
-
-    if post:
-        post_error(request, pk)
-    elif taskpy:
-        task_detail(request, pk)
-    elif taskjs:
-        js_task_detail(request, pk)
 
 
