@@ -1,5 +1,3 @@
-from queue import PriorityQueue
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator
@@ -9,8 +7,6 @@ from stepik.models import Taskpy, Taskjs
 from itertools import chain
 from django.urls import reverse
 from django.db.models import Q
-from blog.views import post_error
-from stepik.views import task_detail, js_task_detail
 
 
 def perform_search(query):
