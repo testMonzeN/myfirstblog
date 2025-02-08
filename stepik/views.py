@@ -1,14 +1,43 @@
+from django.template.loader import render_to_string
+
 from .models import Taskjs, Decisionjs, Taskpy, Decisionpy
 from django.core.paginator import Paginator
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from .form import DecisionForm, DecisionFormJs
 import requests, re
+from django.http import JsonResponse
 from django.contrib.auth.models import User
 
 def main(request):
     return render(request, 'stepik/index.html', {
         'user': request.user.is_superuser
+    })
+
+
+def ajax_task_list_py(request):
+    object_list = Taskpy.objects.all()
+    paginator = Paginator(object_list, 5)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    html = render_to_string('stepik/py/py_task_list.html', {
+        'tasks': page_obj
+    }, request=request)
+
+    pag = render_to_string('stepik/py/paginator.html', {
+        'page_next': page_obj.next_page_number() if page_obj.has_next() else None,
+        'page_previous': page_obj.previous_page_number() if page_obj.has_previous() else None,
+        'page_current': page_obj.number,
+        'page_end': page_obj.paginator.num_pages,
+        'page_has_next': page_obj.has_next,
+        'page_has_previous': page_obj.has_previous
+    }, request=request)
+
+    return JsonResponse({
+        'html': html,
+        'paginator': pag,
     })
 
 def task_list(request):
@@ -17,9 +46,17 @@ def task_list(request):
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'stepik/task_list.html', {
+    return render(request, 'stepik/py/py_stepik_list.html', {
         'tasks': page_obj,
         'page_obj': page_obj,
+
+        'page_next': page_obj.next_page_number() if page_obj.has_next() else None,
+        'page_previous': page_obj.previous_page_number() if page_obj.has_previous() else None,
+        'page_current': page_obj.number,
+        'page_end': page_obj.paginator.num_pages,
+        'page_has_next': page_obj.has_next,
+        'page_has_previous': page_obj.has_previous,
+
         'user': request.user.is_superuser,
     })
 
@@ -27,7 +64,7 @@ def task_list(request):
 def task_detail(request, pk):
     task = get_object_or_404(Taskpy, pk=pk)
     decisions = Decisionpy.objects.filter(task=task)
-    return render(request, 'stepik/task_detail.html',
+    return render(request, 'stepik/py/task_detail.html',
                   {
                       'task': task,
                       'decisions': decisions
@@ -45,7 +82,7 @@ def decision_new(request):
                 return redirect('py_task_list')
         else:
             form = DecisionForm()
-        return render(request, 'stepik/decision_edit.html', {'form': form})
+        return render(request, 'stepik/py/decision_edit.html', {'form': form})
 
     else:
         return redirect('sing_in')
@@ -76,6 +113,33 @@ def py_task_new(request):
 #                 JavaScript                     #
 #                                                #
 ##################################################
+
+def ajax_task_list_js(request):
+    object_list = Taskjs.objects.all()
+    paginator = Paginator(object_list, 5)
+
+    page_number = request.GET.get('page')
+    tasks_in_page = paginator.get_page(page_number)
+
+    html = render_to_string('stepik/js/js_task_list.html', {
+        'tasks': tasks_in_page
+    }, request=request)
+
+    pag = render_to_string('stepik/js/paginator.html', {
+        'page_next': tasks_in_page.next_page_number() if tasks_in_page.has_next() else None,
+        'page_previous': tasks_in_page.previous_page_number() if tasks_in_page.has_previous() else None,
+        'page_current': tasks_in_page.number,
+        'page_end': tasks_in_page.paginator.num_pages,
+        'page_has_next': tasks_in_page.has_next,
+        'page_has_previous': tasks_in_page.has_previous
+    }, request=request)
+
+    return JsonResponse({
+        'html': html,
+        'paginator': pag,
+    })
+
+
 def js_task_list(request):
     tasks = Taskjs.objects.all()
     paginator = Paginator(tasks, 5)
@@ -83,9 +147,17 @@ def js_task_list(request):
     page_number = request.GET.get('page')
     tasks_in_page = paginator.get_page(page_number)
 
-    return render(request, 'stepik/js_task_list.html', {
+    return render(request, 'stepik/js/js_stepik_list.html', {
         'tasks': tasks_in_page,
         'page_obj': tasks_in_page,
+
+        'page_next': tasks_in_page.next_page_number() if tasks_in_page.has_next() else None,
+        'page_previous': tasks_in_page.previous_page_number() if tasks_in_page.has_previous() else None,
+        'page_current': tasks_in_page.number,
+        'page_end': tasks_in_page.paginator.num_pages,
+        'page_has_next': tasks_in_page.has_next,
+        'page_has_previous': tasks_in_page.has_previous,
+
         'user': request.user.is_superuser
     })
 
@@ -93,7 +165,7 @@ def js_task_list(request):
 def js_task_detail(request, pk):
     task = get_object_or_404(Taskjs, pk=pk)
     decisions = Decisionjs.objects.filter(task=task)
-    return render(request, 'stepik/js_task_detail.html',
+    return render(request, 'stepik/js/js_task_detail.html',
                   {
                       'task': task,
                       'decisions': decisions
@@ -113,7 +185,7 @@ def js_decision_new(request):
                 return redirect('js_task_list')
         else:
             form = DecisionFormJs()
-        return render(request, 'stepik/js_decision_edit.html', {'form': form})
+        return render(request, 'stepik/js/js_decision_edit.html', {'form': form})
     else:
         return redirect('sing_in')
 

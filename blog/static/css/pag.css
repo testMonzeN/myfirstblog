@@ -52,3 +52,193 @@
 .prev:hover {
     background-color: #616161;
 }
+
+
+/*
+################################################
+#                  Stepik_py                   #
+################################################
+*/
+
+
+
+.py-step-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.py-step-links:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.pag-info {
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.pagg-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6a1b9a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagg-button:hover {
+    background-color: #8e24aa;
+    transform: translateY(-2px);
+}
+
+.pagg-button:active {
+    transform: translateY(0);
+}
+
+.prev {
+    background-color: #757575;
+}
+
+.prev:hover {
+    background-color: #616161;
+}
+
+
+/*
+################################################
+#                  Stepik_js                   #
+################################################
+*/
+
+.js-step-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.js-step-links:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.pag-info {
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.stepik-pag-js-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6a1b9a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.stepik-pag-js-button:hover {
+    background-color: #8e24aa;
+    transform: translateY(-2px);
+}
+
+.stepik-pag-js-button:active {
+    transform: translateY(0);
+}
+
+.prev {
+    background-color: #757575;
+}
+
+.prev:hover {
+    background-color: #616161;
+}
+
+
+
+
+/*
+################################################
+#                  blog                        #
+################################################
+*/
+
+.step-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.step-links:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.pag-info {
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.blog-pag-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6a1b9a;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.blog-pag-button:hover {
+    background-color: #8e24aa;
+    transform: translateY(-2px);
+}
+
+.blog-pag-button:active {
+    transform: translateY(0);
+}
+
+.prev {
+    background-color: #757575;
+}
+
+.prev:hover {
+    background-color: #616161;
+}

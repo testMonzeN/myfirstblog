@@ -6,11 +6,13 @@ urlpatterns = [
 
     path('#', views.py_task_new, name='py_update_tasks'),
     path('python/', views.task_list, name='py_task_list'),
+    path('python/ajax/', views.ajax_task_list_py, name='ajax_task_list_py'),
     path('python/<int:pk>/', views.task_detail, name='py_task_detail'),
     path('python/new/', views.decision_new, name='py_decision_new'),
 
     path('?', views.js_task_new, name='js_update_tasks'),
     path('js/', views.js_task_list, name='js_task_list'),
+    path('js/ajax/', views.ajax_task_list_js, name='ajax_task_list_js'),
     path('js/<int:pk>/', views.js_task_detail, name='js_task_detail'),
     path('js/new/', views.js_decision_new, name='js_decision_new'),
 

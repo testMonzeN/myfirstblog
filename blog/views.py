@@ -12,11 +12,9 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 
 
-
-
 def post_list_ajax(request):
     object_list = Post.objects.all()
-    paginator = Paginator(object_list, 2)
+    paginator = Paginator(object_list, 5)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -41,7 +39,7 @@ def post_list_ajax(request):
 
 def post_list(request):
     object_list = Post.objects.all()
-    paginator = Paginator(object_list, 2)
+    paginator = Paginator(object_list, 5)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

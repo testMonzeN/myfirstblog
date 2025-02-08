@@ -1,9 +1,9 @@
 {% if page_has_previous %}
-    <div data-page="{{ page_previous }}" class="pag pag-button">ПРЕДЫДУЩАЯ СТРАНИЦА</div>
+    <div data-page="{{ page_previous }}" class="blog-pag blog-pag-button">ПРЕДЫДУЩАЯ СТРАНИЦА</div>
 {% endif %}
 
 <span class="pag-info">Страница {{ page_current }} из {{ page_end }}</span>
 
 {% if page_has_next %}
-    <div data-page="{{ page_next }}" class="pag pag-button">СЛЕДУЮЩАЯ СТРАНИЦА</div>
+    <div data-page="{{ page_next }}" class="blog-pag blog-pag-button">СЛЕДУЮЩАЯ СТРАНИЦА</div>
 {% endif %}

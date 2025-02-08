@@ -6,7 +6,11 @@
     <h1><a href="{% url 'post_error' pk=post.pk %}">{{ post.title }}</a></h1>
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
- {% empty %}
+
+{% empty %}
         <h4>Не могу найти пост содержащий ваш запрос</h4>
 {% endfor %}
+
+
+
 

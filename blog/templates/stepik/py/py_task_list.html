@@ -1,0 +1,7 @@
+{% for task in tasks %}
+  <div class="date">
+    {{ task.published_date }}
+  </div>
+    <h1><a href="{% url 'py_task_detail' pk=task.pk %}">{{ task.title }}</a></h1>
+  <p>{{ task.text|linebreaksbr }}</p>
+{% endfor %}

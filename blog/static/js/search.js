@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (searchForm) {
         searchForm.addEventListener('submit', function(event) {
             const query = document.getElementById('search_text_id').value;
-            if (!query.trim()) {
+            if (query == 'None') {
                 event.preventDefault();
                 alert('Введите поисковый запрос');
                 return;

@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'cards' %}">HOME</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'teleport_stepik' %}">STEPIK</a></li>
+      <li class="breadcrumb-item active" aria-current="page">JAVASCRIPT</li>
+    </ol>
+  </nav>
+
+<div class="task" id="js-stepik-post-container">
+    {% include 'stepik/js/js_task_list.html' %}
+</div>
+
+
+<div class="js-step-links" id="stepik-pagination-links-js">
+    {% include 'stepik/js/paginator.html' %}
+</div>
+
+{% endblock %}
