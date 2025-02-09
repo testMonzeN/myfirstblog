@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from queue import PriorityQueue
 
-from django.conf.global_settings import STATIC_URL
+from django.conf.global_settings import STATIC_URL, STATICFILES_DIRS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -121,9 +121,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-STATIC_URL = '/static/'  # URL-префикс для статических файлов
-STATIC_ROOT = BASE_DIR / 'static'  # Папка, куда собирается статика при выполнении collectstatic
+STATIC_URL = 'static/'  # URL-префикс для статических файлов
 STATICFILES_DIRS = [
+    BASE_DIR / 'static'
 ]
 
 # Default primary key field type
