@@ -42,7 +42,6 @@
     margin: 0;
 }
 
-/* Стили для комментариев (ответов) */
 .answer {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -71,7 +70,6 @@
     margin-bottom: 5px;
 }
 
-/* Стили для сообщения "No comments here yet :(" */
 h2 {
     font-size: 20px;
     color: #777;
@@ -79,7 +77,6 @@ h2 {
     margin: 20px 0;
 }
 
-/* Стили для решений (комментариев) */
 .decision {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
