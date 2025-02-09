@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from queue import PriorityQueue
 
 from django.conf.global_settings import STATIC_URL
 
@@ -120,8 +121,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'blog/static/'
+STATIC_URL = '/static/'  # URL-префикс для статических файлов
+STATIC_ROOT = BASE_DIR / 'static'  # Папка, куда собирается статика при выполнении collectstatic
+STATICFILES_DIRS = [
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

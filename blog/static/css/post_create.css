@@ -1,0 +1,151 @@
+.post-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.post-form h1 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.post-form p {
+    margin-bottom: 15px;
+    color: #ddd;
+}
+
+.post-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+.post-form input[type="text"],
+.post-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #3a3a3a;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.post-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.post-form .save {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post-form .save:hover {
+    background-color: #218838;
+}
+
+.post-form .errorlist {
+    color: #ff4d4d;
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 10px;
+}
+
+.post-form .errorlist li {
+    margin-bottom: 5px;
+}
+
+
+/*
+ANSWER
+*/
+
+.answer-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.answer-form h1 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.answer-form p {
+    margin-bottom: 15px;
+}
+
+.answer-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+.answer-form input[type="text"],
+.answer-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #3a3a3a;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.answer-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.answer-form .save {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.answer-form .save:hover {
+    background-color: #0056b3;
+}
+
+.answer-form .errorlist {
+    color: #ff4d4d;
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 10px;
+}
+
+.answer-form .errorlist li {
+    margin-bottom: 5px;
+}

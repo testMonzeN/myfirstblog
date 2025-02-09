@@ -80,7 +80,7 @@ def decision_new(request):
                 decision.author = request.user
                 decision.published_date = timezone.now()
                 decision.save()
-                return redirect('py_task_list')
+                return redirect('py_task_detail', pk=decision.task.pk)
         else:
             form = DecisionForm()
         return render(request, 'stepik/py/decision_edit.html', {'form': form})
@@ -175,7 +175,6 @@ def js_task_detail(request, pk):
 
 def js_decision_new(request):
     if request.user.is_authenticated:
-
         if request.method == "POST":
             form = DecisionFormJs(request.POST)
             if form.is_valid():
@@ -183,7 +182,7 @@ def js_decision_new(request):
                 decision.author = request.user
                 decision.published_date = timezone.now()
                 decision.save()
-                return redirect('js_task_list')
+                return redirect('js_task_detail', pk=decision.task.pk)
         else:
             form = DecisionFormJs()
         return render(request, 'stepik/js/js_decision_edit.html', {'form': form})

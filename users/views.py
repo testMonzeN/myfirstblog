@@ -1,11 +1,10 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .forms import RegisterForm
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
@@ -41,3 +40,9 @@ def sing_in(request):
             messages.error(request, 'неправильный логин или пароль')
 
     return render(request, 'users/sing_in.html')
+
+def logout_view(request):
+    if request.user.is_authenticated:
+        logout(request)
+
+    return redirect('sing_in')

@@ -1,10 +1,11 @@
+from distutils.command.register import register
+
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from requests import request
 
 from .models import Post, Answer
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .forms import PostForm, AnswerForm
@@ -92,17 +93,14 @@ def answer_new(request):
                 answer.author = request.user
                 answer.date_public = timezone.now()
                 answer.save()
+                return redirect('post_error', pk=answer.post.pk)
         else:
             form = AnswerForm()
         return render(request, 'blog/answer_create.html', {'form': form})
     else:
         return redirect('sing_in')
 
-def logout_view(request):
-    if request.user.is_authenticated:
-        logout(request)
 
-    return redirect('sing_in')
 
 
 

@@ -14,6 +14,7 @@
       <div class="card-body">
         <h5 class="card-title">ФОРЧАН</h5>
         <p class="card-text">ТУТ ТЫ НАЙДЕШЬ ОТВЕТ НА СВОЙ СУПЕР ЖИЗНЕННЫЙ ВОПРОС!!!!11!!1!!!!!</p>
+        {% if request.user.is_authenticated %}<a href="{% url 'post_new' %}" class="btn btn-primary">Скажи о себе всем!</a>{% endif %}
         <a href="{% url 'teleport_blog' %}" class="btn btn-primary">Go!</a>
       </div>
     </div>
