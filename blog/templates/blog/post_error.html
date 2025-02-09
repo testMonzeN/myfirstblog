@@ -16,9 +16,10 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
-        <a class="btn btn-default" href="{% url 'answer_new' %}"><span class="glyphicon glyphicon-pencil"></span></a>
-
+        <a class="btn btn-default" href="{% url 'answer_new' %}"><span class="glyphicon glyphicon-pencil"></span> НАПИШИ СВОЕ МНЕНИЕ</a>
     </div>
+
+    <h2>КОММЕНТАРИИ</h2>
     {% for answer in answers %}
         <div class="answer">
             {% if answer.date_public %}

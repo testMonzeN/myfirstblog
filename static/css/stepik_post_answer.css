@@ -1,0 +1,74 @@
+.decision-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.decision-form h1 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.decision-form p {
+    margin-bottom: 15px;
+    color: #ddd;
+}
+
+.decision-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+.decision-form input[type="text"],
+.decision-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #3a3a3a;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.decision-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.decision-form .save {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.decision-form .save:hover {
+    background-color: #218838;
+}
+
+.decision-form .errorlist {
+    color: #ff4d4d;
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 10px;
+}
+
+.decision-form .errorlist li {
+    margin-bottom: 5px;
+}
+

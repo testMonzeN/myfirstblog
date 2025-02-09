@@ -16,9 +16,10 @@
         <h1><a href="{% url 'py_task_detail' pk=task.pk %}">{{ task.title }}</a></h1>
         <p>{{ task.text|linebreaksbr }}</p>
 
-    <a class="btn btn-default" href="{% url 'py_decision_new' %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'answer_new' %}"><span class="glyphicon glyphicon-pencil"></span> НАПИШИ СВОЕ МНЕНИЕ</a>
 
     </div>
+    <h2>КОММЕНТАРИИ</h2>
 
     {% for decision in decisions %}
         <div class="decision">

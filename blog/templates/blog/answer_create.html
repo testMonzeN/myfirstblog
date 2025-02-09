@@ -4,6 +4,6 @@
     <h1>New answer</h1>
     <form method="POST" class="answer-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Save</button>
     </form>
 {% endblock %}

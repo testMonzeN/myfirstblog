@@ -1,0 +1,109 @@
+.task, .post {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.task:hover, .post:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.date {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.task h1, .post h1 {
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    color: #333;
+}
+
+.task h1 a, .post h1 a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.task h1 a:hover, .post h1 a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.task p, .post p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+/* Стили для комментариев (ответов) */
+.answer {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.answer h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.answer p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+.answer .date {
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+/* Стили для сообщения "No comments here yet :(" */
+h2 {
+    font-size: 20px;
+    color: #777;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Стили для решений (комментариев) */
+.decision {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.decision h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.decision p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+}
+
+.decision .date {
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
