@@ -105,14 +105,14 @@ h2 {
     margin: 20px 0;
 }
 
-@media (max-width: 2000px) {
+@media (max-width: 900px) {
     .task, .post {
         padding: 25px;
         margin-bottom: 25px;
     }
 
     .task h1, .post h1 {
-        font-size: 1000px;
+        font-size: 250px;
         margin-bottom: 60px;
     }
 
