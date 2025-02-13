@@ -42,7 +42,6 @@
     margin: 0;
 }
 
-/* Стили для ответов */
 .answer {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -113,7 +112,7 @@ h2 {
     }
 
     .task h1, .post h1 {
-        font-size: 40px;
+        font-size: 80px;
         margin-bottom: 20px;
     }
 
@@ -128,7 +127,7 @@ h2 {
     }
 
     .answer h3, .decision h3 {
-        font-size: 30px;
+        font-size: 50px;
     }
 
     .answer p, .decision p {
@@ -142,6 +141,6 @@ h2 {
     }
 
     .date {
-        font-size: 25px;
+        font-size: 40px;
     }
 }
