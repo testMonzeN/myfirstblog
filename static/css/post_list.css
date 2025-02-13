@@ -1,3 +1,4 @@
+/* Общие стили для задач и постов */
 .task, .post {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
@@ -42,6 +43,7 @@
     margin: 0;
 }
 
+/* Стили для ответов */
 .answer {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -70,6 +72,7 @@
     margin-bottom: 5px;
 }
 
+/* Стили для решений */
 .decision {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -98,6 +101,7 @@
     margin-bottom: 5px;
 }
 
+/* Заголовок h2 */
 h2 {
     font-size: 20px;
     color: #777;
@@ -107,37 +111,40 @@ h2 {
 
 @media (max-width: 768px) {
     .task, .post {
-        padding: 15px;
-        margin-bottom: 15px;
+        padding: 25px;
+        margin-bottom: 25px;
     }
 
     .task h1, .post h1 {
-        font-size: 20px;
+        font-size: 28px;
+        margin-bottom: 20px;
     }
 
     .task p, .post p {
-        font-size: 14px;
+        font-size: 18px;
+        line-height: 1.8;
     }
 
     .answer, .decision {
-        padding: 10px;
-        margin-bottom: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
     }
 
     .answer h3, .decision h3 {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .answer p, .decision p {
-        font-size: 13px;
+        font-size: 16px;
+        line-height: 1.8;
     }
 
     h2 {
-        font-size: 18px;
-        margin: 15px 0;
+        font-size: 24px;
+        margin: 25px 0;
     }
 
     .date {
-        font-size: 12px;
+        font-size: 16px;
     }
 }

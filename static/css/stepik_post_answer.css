@@ -72,30 +72,48 @@
     margin-bottom: 5px;
 }
 
-
 @media (max-width: 768px) {
     .decision-form {
         max-width: 100%;
-        margin: 10px;
-        padding: 15px;
+        margin: 15px;
+        padding: 25px;
     }
 
     .decision-form h1 {
-        font-size: 20px;
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    .decision-form p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .decision-form label {
+        font-size: 18px;
+        margin-bottom: 10px;
     }
 
     .decision-form input[type="text"],
     .decision-form textarea {
-        font-size: 14px;
-        padding: 8px;
+        font-size: 18px;
+        padding: 15px;
     }
 
     .decision-form textarea {
-        min-height: 120px;
+        min-height: 200px;
     }
 
     .decision-form .save {
-        font-size: 14px;
-        padding: 8px;
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .decision-form .errorlist {
+        font-size: 16px;
+    }
+
+    .decision-form .errorlist li {
+        margin-bottom: 10px;
     }
 }

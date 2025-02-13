@@ -74,18 +74,18 @@
     .py-step-links,
     .js-step-links {
         flex-direction: column;
-        padding: 15px;
-        gap: 10px;
+        padding: 30px;
+        gap: 20px;
     }
 
     .pag-info {
-        font-size: 14px;
+        font-size: 20px;
         text-align: center;
     }
 
     .pagination-controls {
         flex-direction: column;
-        gap: 8px;
+        gap: 15px;
     }
 
     .pag-button,
@@ -93,7 +93,7 @@
     .stepik-pag-js-button,
     .blog-pag-button {
         width: 100%;
-        padding: 8px 16px;
-        font-size: 14px;
+        padding: 15px 30px;
+        font-size: 18px;
     }
 }
