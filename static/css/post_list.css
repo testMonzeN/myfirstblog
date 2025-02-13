@@ -112,12 +112,12 @@ h2 {
     }
 
     .task h1, .post h1 {
-        font-size: 80px;
-        margin-bottom: 20px;
+        font-size: 160px;
+        margin-bottom: 30px;
     }
 
     .task p, .post p {
-        font-size: 18px;
+        font-size: 40px;
         line-height: 1.8;
     }
 
