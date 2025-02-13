@@ -105,7 +105,7 @@ h2 {
     margin: 20px 0;
 }
 
-@media (max-width: 2000px) {
+@media (max-width: 798px) {
     .task, .post {
         padding: 25px;
         margin-bottom: 25px;
