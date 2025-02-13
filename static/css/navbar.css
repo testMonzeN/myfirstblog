@@ -106,3 +106,30 @@ body {
 .search-container button:active {
     transform: scale(0.95);
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .search-container {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .search-container input {
+        width: 70%;
+    }
+
+    .search-container button {
+        width: 25%;
+    }
+}
