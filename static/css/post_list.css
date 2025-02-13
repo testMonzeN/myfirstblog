@@ -105,7 +105,7 @@ h2 {
     margin: 20px 0;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 900px) {
     .task, .post {
         padding: 25px;
         margin-bottom: 25px;
@@ -141,6 +141,6 @@ h2 {
     }
 
     .date {
-        font-size: 40px;
+        font-size: 150px;
     }
 }
