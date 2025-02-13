@@ -98,6 +98,7 @@
     margin-bottom: 5px;
 }
 
+/* Заголовок h2 */
 h2 {
     font-size: 20px;
     color: #777;
@@ -107,40 +108,40 @@ h2 {
 
 @media (max-width: 900px) {
     .task, .post {
-        padding: 25px;
-        margin-bottom: 25px;
+        padding: 30px;
+        margin-bottom: 30px;
     }
 
     .task h1, .post h1 {
-        font-size: 250px;
-        margin-bottom: 60px;
+        font-size: 36px;
+        margin-bottom: 25px;
     }
 
     .task p, .post p {
-        font-size: 40px;
+        font-size: 20px;
         line-height: 1.8;
     }
 
     .answer, .decision {
-        padding: 20px;
-        margin-bottom: 20px;
+        padding: 25px;
+        margin-bottom: 25px;
     }
 
     .answer h3, .decision h3 {
-        font-size: 50px;
+        font-size: 28px;
     }
 
     .answer p, .decision p {
-        font-size: 16px;
+        font-size: 18px;
         line-height: 1.8;
     }
 
     h2 {
-        font-size: 24px;
-        margin: 25px 0;
+        font-size: 30px;
+        margin: 30px 0;
     }
 
     .date {
-        font-size: 50px;
+        font-size: 18px;
     }
 }
