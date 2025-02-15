@@ -3,11 +3,9 @@
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 20px;
-    margin: 0 auto 20px;
+    margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    max-width: 800px;
-    width: 100%;
 }
 
 .task:hover, .post:hover {
@@ -100,7 +98,6 @@
     margin-bottom: 5px;
 }
 
-/* Заголовок h2 */
 h2 {
     font-size: 20px;
     color: #777;
