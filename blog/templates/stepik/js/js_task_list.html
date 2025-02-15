@@ -1,9 +1,15 @@
-      {% for task in tasks %}
-      <div class="task">
-            <div class="date">
-                {{ task.published_date }}
-            </div>
-            <h1><a href="{% url 'js_task_detail' pk=task.pk %}">{{ task.title }}</a></h1>
-            <p>{{ task.text|linebreaksbr }}</p>
-      </div>
-      {% endfor %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12">
+            {% for task in tasks %}
+                  <div class="task">
+                      <div class="date">
+                          {{ task.published_date }}
+                      </div>
+                      <h1><a href="{% url 'js_task_detail' pk=task.pk %}">{{ task.title }}</a></h1>
+                      <p>{{ task.text|linebreaksbr }}</p>
+                  </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

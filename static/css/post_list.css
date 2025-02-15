@@ -42,7 +42,7 @@
     margin: 0;
 }
 
-.answer {
+.answer, .decision {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -51,48 +51,20 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.answer h3 {
+.answer h3, .decision h3 {
     font-size: 18px;
     color: #333;
     margin: 0 0 10px 0;
 }
 
-.answer p {
+.answer p, .decision p {
     font-size: 14px;
     line-height: 1.6;
     color: #555;
     margin: 0;
 }
 
-.answer .date {
-    color: #777;
-    font-size: 12px;
-    margin-bottom: 5px;
-}
-
-.decision {
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.decision h3 {
-    font-size: 18px;
-    color: #333;
-    margin: 0 0 10px 0;
-}
-
-.decision p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #555;
-    margin: 0;
-}
-
-.decision .date {
+.answer .date, .decision .date {
     color: #777;
     font-size: 12px;
     margin-bottom: 5px;
@@ -148,48 +120,6 @@ h2 {
 
 @media (max-width: 768px) {
     .task, .post {
-        padding: 15px;
-        margin-bottom: 30px;
-        max-width: 90%;
-    }
-
-    .task h1, .post h1 {
-        font-size: 20px;
-        margin-bottom: 25px;
-    }
-
-    .task p, .post p {
-        font-size: 14px;
-        line-height: 1.8;
-    }
-
-    .answer, .decision {
-        padding: 25px;
-        margin-bottom: 25px;
-    }
-
-    .answer h3, .decision h3 {
-        font-size: 28px;
-    }
-
-    .answer p, .decision p {
-        font-size: 18px;
-        line-height: 1.8;
-    }
-
-    h2 {
-        font-size: 30px;
-        margin: 30px 0;
-    }
-
-    .date {
-        font-size: 18px;
-    }
-}
-
-
-@media (max-width: 600px) {
-    .task, .post {
         padding: 20px;
         margin-bottom: 20px;
         max-width: 95%;
@@ -229,7 +159,7 @@ h2 {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .task, .post {
         padding: 15px;
         margin-bottom: 15px;
@@ -267,5 +197,45 @@ h2 {
 
     .date {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .task, .post {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .task h1, .post h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .task p, .post p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .answer, .decision {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .answer h3, .decision h3 {
+        font-size: 18px;
+    }
+
+    .answer p, .decision p {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .date {
+        font-size: 12px;
     }
 }
