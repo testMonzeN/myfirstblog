@@ -3,11 +3,11 @@
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 20px;
-    margin: 0 auto 20px; /* Центрирование по горизонтали */
+    margin: 0 auto 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    max-width: 800px; /* Максимальная ширина поста */
-    width: 100%; /* Занимает всю доступную ширину */
+    max-width: 800px;
+    width: 100%;
 }
 
 .task:hover, .post:hover {
@@ -112,7 +112,7 @@ h2 {
     .task, .post {
         padding: 30px;
         margin-bottom: 30px;
-        max-width: 90%; /* Увеличиваем ширину на узких экранах */
+        max-width: 90%;
     }
 
     .task h1, .post h1 {
@@ -153,7 +153,7 @@ h2 {
     .task, .post {
         padding: 20px;
         margin-bottom: 20px;
-        max-width: 95%; /* Еще больше увеличиваем ширину на очень узких экранах */
+        max-width: 95%;
     }
 
     .task h1, .post h1 {
@@ -194,7 +194,7 @@ h2 {
     .task, .post {
         padding: 15px;
         margin-bottom: 15px;
-        max-width: 100%; /* На самых маленьких экранах занимаем всю ширину */
+        max-width: 100%;
     }
 
     .task h1, .post h1 {
