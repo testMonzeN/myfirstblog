@@ -11,7 +11,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    margin-bottom: 20px; /* Отступ снизу */
+    margin-bottom: 20px;
 }
 
 .step-links:hover,
@@ -69,7 +69,58 @@
     background-color: #616161;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 575.98px) {
+    .step-links,
+    .search-pag,
+    .py-step-links,
+    .js-step-links {
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .pag-info {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .pagination-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .pag-button,
+    .pagg-button,
+    .stepik-pag-js-button,
+    .blog-pag-button {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .step-links,
+    .search-pag,
+    .py-step-links,
+    .js-step-links {
+        padding: 20px;
+    }
+
+    .pag-info {
+        font-size: 16px;
+    }
+
+    .pag-button,
+    .pagg-button,
+    .stepik-pag-js-button,
+    .blog-pag-button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
     .step-links,
     .search-pag,
     .py-step-links,
@@ -85,58 +136,70 @@
     .pagg-button,
     .stepik-pag-js-button,
     .blog-pag-button {
-        padding: 12px 24px;
+        padding: 15px 25px;
         font-size: 18px;
     }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 992px) and (max-width: 1199.98px) {
     .step-links,
     .search-pag,
     .py-step-links,
     .js-step-links {
-        flex-direction: column;
-        padding: 20px;
-        gap: 15px;
+        padding: 30px;
     }
 
     .pag-info {
         font-size: 20px;
-        text-align: center;
-    }
-
-    .pagination-controls {
-        flex-direction: column;
-        gap: 10px;
     }
 
     .pag-button,
     .pagg-button,
     .stepik-pag-js-button,
     .blog-pag-button {
-        width: 100%;
-        padding: 15px 30px;
-        font-size: 18px;
+        padding: 18px 30px;
+        font-size: 20px;
     }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 1200px) and (max-width: 1399.98px) {
     .step-links,
     .search-pag,
     .py-step-links,
     .js-step-links {
-        padding: 15px;
+        padding: 35px;
     }
 
     .pag-info {
-        font-size: 16px;
+        font-size: 22px;
     }
 
     .pag-button,
     .pagg-button,
     .stepik-pag-js-button,
     .blog-pag-button {
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 20px 35px;
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .step-links,
+    .search-pag,
+    .py-step-links,
+    .js-step-links {
+        padding: 40px;
+    }
+
+    .pag-info {
+        font-size: 24px;
+    }
+
+    .pag-button,
+    .pagg-button,
+    .stepik-pag-js-button,
+    .blog-pag-button {
+        padding: 25px 40px;
+        font-size: 24px;
     }
 }

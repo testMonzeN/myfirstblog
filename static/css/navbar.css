@@ -41,7 +41,6 @@ body {
     color: #6c757d;
 }
 
-/* Стили для навбара (оставлены без изменений) */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -145,41 +144,113 @@ body {
     transform: scale(0.95);
 }
 
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
+@media (max-width: 575.98px) {
     .breadcrumb {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
         padding: 0.5rem;
         font-size: 0.9rem;
     }
 
     .breadcrumb-item + .breadcrumb-item::before {
-        padding: 0 0.25rem;
+        content: none;
     }
 
     .navbar {
         flex-direction: column;
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
     .logo {
-        font-size: 2rem;
-        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
     }
 
     .nav-links {
         flex-direction: column;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
+        gap: 1rem;
+        margin-top: 1rem;
     }
 
     .nav-links li a {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .search-container {
         width: 100%;
         justify-content: center;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .search-container input {
+        width: 60%;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .search-container button {
+        width: 35%;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .breadcrumb {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .navbar {
+        padding: 1.25rem;
+    }
+
+    .logo {
+        font-size: 1.75rem;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+    }
+
+    .nav-links li a {
+        font-size: 1.1rem;
+    }
+
+    .search-container input {
+        width: 65%;
+        padding: 0.6rem 1.1rem;
+        font-size: 1rem;
+    }
+
+    .search-container button {
+        width: 30%;
+        padding: 0.6rem 1.1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .breadcrumb {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .navbar {
+        padding: 1.5rem;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        gap: 2rem;
+    }
+
+    .nav-links li a {
+        font-size: 1.2rem;
     }
 
     .search-container input {
@@ -195,22 +266,107 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 992px) and (max-width: 1199.98px) {
     .breadcrumb {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+        padding: 1.25rem;
+        font-size: 1.2rem;
     }
 
-    .breadcrumb-item + .breadcrumb-item::before {
-        content: none;
+    .navbar {
+        padding: 1.75rem;
     }
 
-    .breadcrumb-item a {
-        font-size: 0.9rem;
+    .logo {
+        font-size: 2.25rem;
     }
 
-    .breadcrumb-item.active {
-        font-size: 0.9rem;
+    .nav-links {
+        gap: 2.5rem;
+    }
+
+    .nav-links li a {
+        font-size: 1.3rem;
+    }
+
+    .search-container input {
+        width: 75%;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .search-container button {
+        width: 20%;
+        padding: 0.8rem 1.75rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .breadcrumb {
+        padding: 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    .navbar {
+        padding: 2rem;
+    }
+
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    .nav-links {
+        gap: 3rem;
+    }
+
+    .nav-links li a {
+        font-size: 1.4rem;
+    }
+
+    .search-container input {
+        width: 80%;
+        padding: 1rem 1.75rem;
+        font-size: 1.3rem;
+    }
+
+    .search-container button {
+        width: 15%;
+        padding: 1rem 2rem;
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .breadcrumb {
+        padding: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .navbar {
+        padding: 2.5rem;
+    }
+
+    .logo {
+        font-size: 3rem;
+    }
+
+    .nav-links {
+        gap: 3.5rem;
+    }
+
+    .nav-links li a {
+        font-size: 1.5rem;
+    }
+
+    .search-container input {
+        width: 85%;
+        padding: 1.25rem 2rem;
+        font-size: 1.5rem;
+    }
+
+    .search-container button {
+        width: 10%;
+        padding: 1.25rem 2.5rem;
+        font-size: 1.5rem;
     }
 }
