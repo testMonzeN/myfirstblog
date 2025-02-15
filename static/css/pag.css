@@ -11,6 +11,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
+    margin-bottom: 20px; /* Отступ снизу */
 }
 
 .step-links:hover,
@@ -68,14 +69,35 @@
     background-color: #616161;
 }
 
+@media (max-width: 900px) {
+    .step-links,
+    .search-pag,
+    .py-step-links,
+    .js-step-links {
+        padding: 25px;
+    }
+
+    .pag-info {
+        font-size: 18px;
+    }
+
+    .pag-button,
+    .pagg-button,
+    .stepik-pag-js-button,
+    .blog-pag-button {
+        padding: 12px 24px;
+        font-size: 18px;
+    }
+}
+
 @media (max-width: 768px) {
     .step-links,
     .search-pag,
     .py-step-links,
     .js-step-links {
         flex-direction: column;
-        padding: 30px;
-        gap: 20px;
+        padding: 20px;
+        gap: 15px;
     }
 
     .pag-info {
@@ -85,7 +107,7 @@
 
     .pagination-controls {
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
     }
 
     .pag-button,
@@ -95,5 +117,26 @@
         width: 100%;
         padding: 15px 30px;
         font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .step-links,
+    .search-pag,
+    .py-step-links,
+    .js-step-links {
+        padding: 15px;
+    }
+
+    .pag-info {
+        font-size: 16px;
+    }
+
+    .pag-button,
+    .pagg-button,
+    .stepik-pag-js-button,
+    .blog-pag-button {
+        padding: 10px 20px;
+        font-size: 16px;
     }
 }
