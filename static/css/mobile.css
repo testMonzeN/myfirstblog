@@ -72,27 +72,42 @@
     }
 
     .task, .post {
-        padding: 15px;
+        padding: 20px;
+        margin-bottom: 25px;
     }
 
     .task h1, .post h1 {
-        font-size: 20px;
+        font-size: 26px;
+        margin-bottom: 20px;
     }
 
     .task p, .post p {
-        font-size: 14px;
+        font-size: 18px;
+        line-height: 1.8;
     }
 
     .answer, .decision {
-        padding: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
     }
 
     .answer h3, .decision h3 {
-        font-size: 16px;
+        font-size: 22px;
+        margin-bottom: 15px;
     }
 
     .answer p, .decision p {
-        font-size: 12px;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .date {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin: 30px 0;
     }
 
     .decision-form {
