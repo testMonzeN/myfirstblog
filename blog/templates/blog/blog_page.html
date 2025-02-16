@@ -9,18 +9,16 @@
     </ol>
 </nav>
 
-<div id="post-container">
-    {% include 'blog/post_list.html' %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div id="post-container">
+            {% include 'blog/post_list.html' %}
+        </div>
+        <div class="step-links" id="blog-pagination-links">
+            {% include 'blog/pagination.html' %}
+        </div>
+        {% endblock %}
+    </div>
 </div>
-
-
-<div class="step-links" id="blog-pagination-links">
-    {% include 'blog/pagination.html' %}
-</div>
-
-{% endblock %}
-
-
-
 
 
