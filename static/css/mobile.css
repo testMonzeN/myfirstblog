@@ -71,6 +71,7 @@
         font-size: 14px;
     }
 
+
     .task, .post {
         padding: 20px;
         margin-bottom: 25px;
@@ -125,5 +126,23 @@
 
     .decision-form .save {
         font-size: 14px;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+        max-height: 80vh;
+    }
+
+    body {
+        text-align: center; /* Центрирование текста */
+        padding: 20px; /* Отступы вокруг контента */
+    }
+
+    h1, h2, h3, p {
+        text-align: center; /* Центрирование заголовков и текста */
     }
 }
