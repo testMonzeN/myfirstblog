@@ -33,6 +33,7 @@
     .js-step-links {
         flex-direction: column;
         padding: 10px;
+        width: 100%;
     }
 
     .pagination-controls {
@@ -45,36 +46,41 @@
     .stepik-pag-js-button,
     .blog-pag-button {
         width: 100%;
-        padding: 8px 16px;
-        font-size: 14px;
+        padding: 12px 16px;
+        font-size: 16px;
     }
 
     .post-form,
     .answer-form {
-        padding: 15px;
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .post-form h1,
     .answer-form h1 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .post-form input[type="text"],
     .post-form textarea,
     .answer-form input[type="text"],
     .answer-form textarea {
-        font-size: 14px;
+        font-size: 16px;
+        width: 100%;
     }
 
     .post-form .save,
     .answer-form .save {
-        font-size: 14px;
+        font-size: 16px;
+        width: 100%;
     }
-
 
     .task, .post {
         padding: 20px;
         margin-bottom: 25px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .task h1, .post h1 {
@@ -90,6 +96,8 @@
     .answer, .decision {
         padding: 15px;
         margin-bottom: 20px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .answer h3, .decision h3 {
@@ -112,20 +120,24 @@
     }
 
     .decision-form {
-        padding: 15px;
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .decision-form h1 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .decision-form input[type="text"],
     .decision-form textarea {
-        font-size: 14px;
+        font-size: 16px;
+        width: 100%;
     }
 
     .decision-form .save {
-        font-size: 14px;
+        font-size: 16px;
+        width: 100%;
     }
 
     img {
@@ -138,11 +150,26 @@
     }
 
     body {
-        text-align: center; /* Центрирование текста */
-        padding: 20px; /* Отступы вокруг контента */
+        text-align: center;
+        padding: 20px;
     }
 
     h1, h2, h3, p {
-        text-align: center; /* Центрирование заголовков и текста */
+        text-align: center;
+    }
+
+    .content.container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .row {
+        width: 100%;
+        margin: 0;
+    }
+
+    .col-md-8 {
+        width: 100%;
+        padding: 0;
     }
 }
