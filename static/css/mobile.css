@@ -1,0 +1,114 @@
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-links li a {
+        font-size: 1rem;
+    }
+
+    .search-container {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+
+    .search-container input {
+        width: 70%;
+    }
+
+    .search-container button {
+        width: 25%;
+    }
+
+    .step-links,
+    .search-pag,
+    .py-step-links,
+    .js-step-links {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .pagination-controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .pag-button,
+    .pagg-button,
+    .stepik-pag-js-button,
+    .blog-pag-button {
+        width: 100%;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .post-form,
+    .answer-form {
+        padding: 15px;
+    }
+
+    .post-form h1,
+    .answer-form h1 {
+        font-size: 20px;
+    }
+
+    .post-form input[type="text"],
+    .post-form textarea,
+    .answer-form input[type="text"],
+    .answer-form textarea {
+        font-size: 14px;
+    }
+
+    .post-form .save,
+    .answer-form .save {
+        font-size: 14px;
+    }
+
+    .task, .post {
+        padding: 15px;
+    }
+
+    .task h1, .post h1 {
+        font-size: 20px;
+    }
+
+    .task p, .post p {
+        font-size: 14px;
+    }
+
+    .answer, .decision {
+        padding: 10px;
+    }
+
+    .answer h3, .decision h3 {
+        font-size: 16px;
+    }
+
+    .answer p, .decision p {
+        font-size: 12px;
+    }
+
+    .decision-form {
+        padding: 15px;
+    }
+
+    .decision-form h1 {
+        font-size: 20px;
+    }
+
+    .decision-form input[type="text"],
+    .decision-form textarea {
+        font-size: 14px;
+    }
+
+    .decision-form .save {
+        font-size: 14px;
+    }
+}

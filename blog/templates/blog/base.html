@@ -13,25 +13,26 @@
     <link rel="stylesheet" href="{% static 'css/post_create.css' %}">
     <link rel="stylesheet" href="{% static 'css/stepik_post_answer.css' %}">
     <link rel="stylesheet" href="{% static 'css/post_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mobile.css' %}">
 </head>
 <body>
 
 <div class="page-header mt-0 rounded-0">
     <nav class="navbar rounded-0">
         <div class="logo">Karadev House</div>
-            <div class="search-container" id="id_search-container">
-                <form action="{% url 'global_search' %}" method="get">
-                    <input id="search_text_id" type="search" name="q" class="search_text" value="{{ query }}" placeholder="Поиск..." />
-                    <button type="submit" class="search_btn" id="search_id">🔍</button>
-                </form>
-            </div>
+        <div class="search-container" id="id_search-container">
+            <form action="{% url 'global_search' %}" method="get">
+                <input id="search_text_id" type="search" name="q" class="search_text" value="{{ query }}" placeholder="Поиск..." />
+                <button type="submit" class="search_btn" id="search_id">🔍</button>
+            </form>
+        </div>
         <ul class="nav-links">
             <li><a href="{% url 'cards' %}"><i class="fa-solid fa-house"></i> ГЛАВНАЯ</a></li>
             <li><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> ВЫЙТИ</a></li>
         </ul>
     </nav>
-
 </div>
+
 <div class="content container">
     <div class="row">
         <div class="col-md-8">
@@ -40,6 +41,7 @@
         </div>
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="{% static 'js/search.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
