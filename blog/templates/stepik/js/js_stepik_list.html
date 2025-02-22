@@ -1,7 +1,7 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-<div class="container container-fluid">
+<div class="container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'cards' %}">HOME</a></li>
@@ -10,13 +10,14 @@
         </ol>
     </nav>
 
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-20" id="js-stepik-post-container">
+    <div class="row">
+        <div class="col-12" id="js-stepik-post-container">
             {% include 'stepik/js/js_task_list.html' %}
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-20">
+
+    <div class="row">
+        <div class="col-12">
             <div class="js-step-links" id="stepik-pagination-links-js">
                 {% include 'stepik/js/paginator.html' %}
             </div>
