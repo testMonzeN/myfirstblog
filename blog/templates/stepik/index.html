@@ -11,30 +11,40 @@
 
     <div class="row">
         <div class="col-12 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h3 class="card-title">PYTHON</h3>
-                    <p class="card-text fs-5">А ТУТ ТУПОЙ ШКОЛЬНИК СМОЖЕТ НАЙТИ РЕШЕНИЕ ЗАДАЧИ ПО КУРСУ PYTHON</p>
-                    <div class="d-flex gap-2">
-                        {% if user %}
-                            <a href="{% url 'py_update_tasks' %}" class="btn btn-primary btn-md">Обновить таски</a>
-                        {% endif %}
-                        <a href="{% url 'py_task_list' %}" class="btn btn-primary btn-md">Go!</a>
+            <div class="card h-100 shadow-sm p-3">
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title">PYTHON</h2>
+                    <p class="card-text fs-4">
+                        Решения задач и учебные материалы по курсам Python на платформе Stepik.
+                        Подходит для начинающих и опытных разработчиков.
+                    </p>
+                    <div class="mt-auto">
+                        <div class="d-flex gap-2">
+                            {% if user %}
+                                <a href="{% url 'py_update_tasks' %}" class="btn btn-primary btn-lg">Обновить задачи</a>
+                            {% endif %}
+                            <a href="{% url 'py_task_list' %}" class="btn btn-primary btn-lg">Перейти</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-12 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h3 class="card-title">JAVASCRIPT</h3>
-                    <p class="card-text fs-5">А ТУТ ТУПОЙ ШКОЛЬНИК СМОЖЕТ НАЙТИ РЕШЕНИЕ ЗАДАЧИ ПО КУРСУ JS</p>
-                    <div class="d-flex gap-2">
-                        {% if user %}
-                            <a href="{% url 'js_update_tasks' %}" class="btn btn-primary btn-md">Обновить таски</a>
-                        {% endif %}
-                        <a href="{% url 'js_task_list' %}" class="btn btn-primary btn-md">Go!</a>
+            <div class="card h-100 shadow-sm p-3">
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title">JAVASCRIPT</h2>
+                    <p class="card-text fs-4">
+                        Решения задач и учебные материалы по курсам JavaScript на платформе Stepik.
+                        Идеально для тех, кто изучает фронтенд-разработку.
+                    </p>
+                    <div class="mt-auto">
+                        <div class="d-flex gap-2">
+                            {% if user %}
+                                <a href="{% url 'js_update_tasks' %}" class="btn btn-primary btn-lg">Обновить задачи</a>
+                            {% endif %}
+                            <a href="{% url 'js_task_list' %}" class="btn btn-primary btn-lg">Перейти</a>
+                        </div>
                     </div>
                 </div>
             </div>
