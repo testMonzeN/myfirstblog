@@ -1,33 +1,40 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">HOME</li>
-  </ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">HOME</li>
+    </ol>
 </nav>
 
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">ОБСУЖДЕНИЕ</h5>
-        <p class="card-text">ТУТ ТЫ НАЙДЕШЬ ОТВЕТ НА СВОЙ СУПЕР ЖИЗНЕННЫЙ ВОПРОС!!!!11!!1!!!!!</p>
-        {% if request.user.is_authenticated %}<a href="{% url 'post_new' %}" class="btn btn-primary">Скажи о себе всем!</a>{% endif %}
-        <a href="{% url 'teleport_blog' %}" class="btn btn-primary">Go!</a>
-      </div>
-    </div>
-  </div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">ОБСУЖДЕНИЕ</h5>
+                    <p class="card-text">ТУТ ТЫ НАЙДЕШЬ ОТВЕТ НА СВОЙ СУПЕР ЖИЗНЕННЫЙ ВОПРОС!!!!11!!1!!!!!</p>
+                    <div class="d-grid gap-2 d-md-block">
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'post_new' %}" class="btn btn-primary mb-2 mb-md-0">Скажи о себе всем!</a>
+                        {% endif %}
+                        <a href="{% url 'teleport_blog' %}" class="btn btn-primary">Go!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">ОТВЕТЫ ПО КУРСАМ ОТ СТЕПИК</h5>
-        <p class="card-text">А ТУТ ТУПОЙ ШКОЛЬНИК СМОЖЕТ НАЙТИ РЕШЕНИЕ ЗАДАЧ1!!!!!111!11!!!</p>
-        <a href="{% url 'teleport_stepik' %}" class="btn btn-primary">Go!</a>
-      </div>
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">ОТВЕТЫ ПО КУРСАМ ОТ СТЕПИК</h5>
+                    <p class="card-text">А ТУТ ТУПОЙ ШКОЛЬНИК СМОЖЕТ НАЙТИ РЕШЕНИЕ ЗАДАЧ1!!!!!111!11!!!</p>
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="{% url 'teleport_stepik' %}" class="btn btn-primary">Go!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {% endblock %}
