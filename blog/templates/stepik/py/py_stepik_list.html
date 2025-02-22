@@ -1,15 +1,16 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url 'cards' %}">HOME</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'teleport_stepik' %}">STEPIK</a></li>
-        <li class="breadcrumb-item active" aria-current="page">PYTHON</li>
-    </ol>
-</nav>
-
 <div class="container container-fluid">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'cards' %}">HOME</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'teleport_stepik' %}">STEPIK</a></li>
+            <li class="breadcrumb-item active" aria-current="page">PYTHON</li>
+        </ol>
+    </nav>
+
     <div class="row justify-content-center">
         <div class="col-12 col-md-20" id="stepik-post-container">
             {% include 'stepik/py/py_task_list.html' %}

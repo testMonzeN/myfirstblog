@@ -7,8 +7,8 @@ body {
 .breadcrumb {
     display: flex;
     flex-wrap: wrap;
-    padding: 0.25rem 0.5rem;
-    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
     list-style: none;
     background-color: #f8f9fa;
     border-radius: 0.2rem;
@@ -22,7 +22,7 @@ body {
 
 .breadcrumb-item + .breadcrumb-item::before {
     content: "/";
-    padding: 0 0.2rem;
+    padding: 0 0.5rem;
     color: #6c757d;
 }
 
@@ -30,6 +30,7 @@ body {
     color: #007bff;
     text-decoration: none;
     transition: color 0.2s ease;
+    font-size: 1.1rem;
 }
 
 .breadcrumb-item a:hover {
@@ -39,6 +40,7 @@ body {
 
 .breadcrumb-item.active {
     color: #6c757d;
+    font-size: 1.1rem;
 }
 
 .navbar {
@@ -46,13 +48,13 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #333;
-    padding: 0.5rem 1rem;
+    padding: 1rem 2rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: bold;
     letter-spacing: 0.3px;
     text-transform: uppercase;
@@ -61,7 +63,7 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     margin: 0;
     padding: 0;
 }
@@ -75,7 +77,7 @@ body {
 .nav-links li a {
     text-decoration: none;
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     font-weight: 500;
     transition: color 0.2s ease, transform 0.2s ease;
     position: relative;
@@ -85,16 +87,16 @@ body {
     content: '';
     position: absolute;
     width: 0;
-    height: 1.5px;
+    height: 2px;
     background-color: #00bfff;
-    bottom: -3px;
+    bottom: -5px;
     left: 0;
     transition: width 0.2s ease;
 }
 
 .nav-links li a:hover {
     color: #00bfff;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
 .nav-links li a:hover::after {
@@ -104,15 +106,15 @@ body {
 .search-container {
     display: flex;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.5rem;
 }
 
 .search-container input {
-    padding: 0.3rem 0.6rem;
+    padding: 0.5rem 1rem;
     border: none;
-    border-radius: 15px;
+    border-radius: 25px;
     outline: none;
-    font-size: 0.8rem;
+    font-size: 1rem;
     background-color: #444;
     color: #fff;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
@@ -120,24 +122,24 @@ body {
 
 .search-container input:focus {
     background-color: #555;
-    box-shadow: 0 0 4px rgba(0, 191, 255, 0.4);
+    box-shadow: 0 0 6px rgba(0, 191, 255, 0.6);
 }
 
 .search-container button {
-    padding: 0.3rem 1rem;
+    padding: 0.5rem 1.5rem;
     border: none;
     background-color: #00bfff;
     color: white;
-    border-radius: 15px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .search-container button:hover {
     background-color: #007bbf;
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 .search-container button:active {
