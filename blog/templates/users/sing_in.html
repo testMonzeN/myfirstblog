@@ -1,18 +1,37 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-    <p>Войдите в аккаунт! Если его у вас его нету: <a href="{% url 'register' %}">Регистрация</a></p>
-    <form method="POST" class="reg-form">
-        {% csrf_token %}
-        <label for="username">Login:</label>
-        <input type="text" id="username" name="username" required>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <div class="card shadow-sm mt-5">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Вход в аккаунт</h2>
+                    <p class="text-center">Если у вас нет аккаунта, <a href="{% url 'register' %}">зарегистрируйтесь</a>.</p>
 
-        </p><label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+                    <form method="POST" class="reg-form">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Логин:</label>
+                            <input type="text" id="username" name="username" class="form-control" required>
+                        </div>
 
-        <button type="submit">Войти</button>
-    </form>
-    {% for message in messages %}
-        <div class="alert alert-danger">{{ message }}</div>
-    {% endfor %}
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Пароль:</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-sm">Войти</button>
+                        </div>
+                    </form>
+
+                    {% for message in messages %}
+                        <div class="alert alert-danger mt-3">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
