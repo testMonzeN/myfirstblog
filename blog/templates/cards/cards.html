@@ -8,30 +8,29 @@
         </ol>
     </nav>
 
-
     <div class="row">
-        <div class="col-12 col-md-6 mb-4">
-            <div class="card h-100">
+        <div class="col-12 mb-4">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">ОБСУЖДЕНИЕ</h5>
-                    <p class="card-text">ТУТ ТЫ НАЙДЕШЬ ОТВЕТ НА СВОЙ СУПЕР ЖИЗНЕННЫЙ ВОПРОС!!!!11!!1!!!!!</p>
-                    <div class="d-grid gap-2 d-md-block">
+                    <h3 class="card-title">ОБСУЖДЕНИЕ</h3>
+                    <p class="card-text fs-5">ТУТ ТЫ НАЙДЕШЬ ОТВЕТ НА СВОЙ СУПЕР ЖИЗНЕННЫЙ ВОПРОС!!!!11!!1!!!!!</p>
+                    <div class="d-flex gap-2">
                         {% if request.user.is_authenticated %}
-                            <a href="{% url 'post_new' %}" class="btn btn-primary mb-2 mb-md-0">Скажи о себе всем!</a>
+                            <a href="{% url 'post_new' %}" class="btn btn-primary btn-md">Скажи о себе всем!</a>
                         {% endif %}
-                        <a href="{% url 'teleport_blog' %}" class="btn btn-primary">Go!</a>
+                        <a href="{% url 'teleport_blog' %}" class="btn btn-primary btn-md">Go!</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 mb-4">
-            <div class="card h-100">
+        <div class="col-12 mb-4">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">ОТВЕТЫ ПО КУРСАМ ОТ СТЕПИК</h5>
-                    <p class="card-text">А ТУТ ТУПОЙ ШКОЛЬНИК СМОЖЕТ НАЙТИ РЕШЕНИЕ ЗАДАЧ1!!!!!111!11!!!</p>
-                    <div class="d-grid gap-2 d-md-block">
-                        <a href="{% url 'teleport_stepik' %}" class="btn btn-primary">Go!</a>
+                    <h3 class="card-title">ОТВЕТЫ ПО КУРСАМ ОТ СТЕПИК</h3>
+                    <p class="card-text fs-5">А ТУТ ТУПОЙ ШКОЛЬНИК СМОЖЕТ НАЙТИ РЕШЕНИЕ ЗАДАЧ1!!!!!111!11!!!</p>
+                    <div class="d-flex gap-2">
+                        <a href="{% url 'teleport_stepik' %}" class="btn btn-primary btn-md">Go!</a>
                     </div>
                 </div>
             </div>
