@@ -1,7 +1,3 @@
-from django.urls import reverse
-
-import django.contrib.auth.handlers.modwsgi
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
 from django.shortcuts import resolve_url
@@ -23,6 +19,9 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return resolve_url('post_error', pk=self.pk)
+
+    def get_author(self):
+        return self.author.username
 
 class Answer(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

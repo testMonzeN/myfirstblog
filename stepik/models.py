@@ -24,6 +24,9 @@ class Taskpy(models.Model):
     def get_absolute_url(self):
         return resolve_url('py_task_detail', pk=self.pk)
 
+    def get_author(self):
+        return self.author.username
+
 class Decisionpy(models.Model):
     task = models.ForeignKey(Taskpy, on_delete=models.CASCADE)
 
@@ -58,6 +61,9 @@ class Taskjs(models.Model):
 
     def get_absolute_url(self):
         return resolve_url('js_task_detail', pk=self.pk)
+
+    def get_author(self):
+        return self.author.username
 
 class Decisionjs(models.Model):
     task = models.ForeignKey(Taskjs, on_delete=models.CASCADE)
