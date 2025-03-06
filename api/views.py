@@ -13,7 +13,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 
-
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
     class Meta:
