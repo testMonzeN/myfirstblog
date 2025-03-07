@@ -1,4 +1,3 @@
-from discord.utils import async_all
 from rest_framework import serializers
 from blog.models import Post
 from stepik.models import Taskpy, Taskjs
