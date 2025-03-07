@@ -1,3 +1,4 @@
+from discord.utils import async_all
 from rest_framework import serializers
 from blog.models import Post
 from stepik.models import Taskpy, Taskjs
@@ -87,6 +88,15 @@ class Catapi(View):
             model.published_date = timezone.now()
 
             model.save()
+
+class CatHistory(View):
+    def get(self, request):
+        all_image = Catlink.objects.all()
+
+
+        return render(request, 'api/cat/history.html', {
+            'image': all_image
+        })
 
 
 
