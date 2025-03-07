@@ -1,0 +1,38 @@
+.cat-container {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.cat-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin: 2rem 0;
+    transition: opacity 0.5s ease;
+}
+
+.cat-image.loading {
+    opacity: 0.5;
+}
+
+#refresh-cat {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    transition: transform 0.2s ease;
+}
+
+#refresh-cat:hover {
+    transform: scale(1.05);
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: #dc3545;
+    margin: 2rem 0;
+}

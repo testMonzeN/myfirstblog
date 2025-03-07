@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'stepik',
     'cards',
     'users',
+    'search',
     'api',
 ]
 

@@ -1,0 +1,23 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+<div class="cat-container">
+    {% if image %}
+        <img src="{{ image }}" class="cat-image img-fluid rounded shadow-lg" alt="Случайный котик">
+    {% else %}
+        <div class="alert alert-danger error-message" role="alert">
+            Ой! Нету котэка 😥. Попробуй ещё раз!
+        </div>
+    {% endif %}
+
+    <button
+        id="refresh-cat"
+        class="btn btn-primary btn-lg"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top">
+
+        <i class="fa-solid fa-cat"></i>
+        ХАЧУ КОТЭКАААААААААААААААААААААААААААААААА
+    </button>
+</div>
+{% endblock %}
