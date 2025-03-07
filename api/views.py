@@ -1,4 +1,3 @@
-from discord.app_commands import private_channel_only
 from rest_framework import serializers
 from blog.models import Post
 from stepik.models import Taskpy, Taskjs
