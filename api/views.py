@@ -3,13 +3,13 @@ from blog.models import Post
 from stepik.models import Taskpy, Taskjs
 from rest_framework import viewsets
 from django.contrib.auth import get_user_model
-import requests
 from django.shortcuts import render
 from django.views import View
 from .models import Catlink
 from django.utils import timezone
-
-
+from django_ratelimit.decorators import ratelimit
+from django.utils.decorators import method_decorator
+import requests
 
 User = get_user_model()
 
@@ -60,19 +60,39 @@ class TaskJsViewSet(viewsets.ModelViewSet):
 
 
 class Catapi(View):
+    @method_decorator(ratelimit(key='ip', rate='30/m'))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     def get(self, request):
         key = 'live_pLbZvqWanhciL4RKR9IzPN0YcC1r6MUHzE2m5Rs3PxzlzZPyvo3hzJQ3HF12ne3G'
         url = 'https://api.thecatapi.com/v1/images/search'
 
         try:
-            html = requests.get(url, params={
-                'x-api-key': key
-            }).json()
+            response = requests.get(
+                url,
+                params={'x-api-key': key},
+                timeout=(3.05, 5)
+            )
 
+            response.raise_for_status()
+            html = response.json()
             image = html[0]['url']
+
+        except requests.Timeout:
+            return render(request, 'api/cat/cat.html', {
+                'error': 'Сервер с котиками не ответил вовремя 😿'
+            })
+
+        except requests.RequestException as e:
+            print(f'Ошибка подключения: {str(e)}')
+            return render(request, 'api/cat/cat.html', {
+                'error': 'Не удалось подключиться к серверу котиков 😿'
+            })
+
         except Exception as e:
+            print(f'Ошибка: {str(e)}')
             image = None
-            print('НЕ БУДЕТ КОТЭКА(((((((((((((((((((((((((((((((', e)
 
         self.load(image)
         return render(request, 'api/cat/cat.html', {

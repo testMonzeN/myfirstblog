@@ -140,3 +140,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
