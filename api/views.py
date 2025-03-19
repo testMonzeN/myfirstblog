@@ -60,11 +60,11 @@ class TaskJsViewSet(viewsets.ModelViewSet):
 
 
 class Catapi(View):
-    @method_decorator(ratelimit(key='ip', rate='30/m'))
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
-
+    @method_decorator(ratelimit(key='ip', rate='5/d', block=True))
     def get(self, request):
+        if getattr(request, 'ratelimited', True):
+            return self.limit(request)
+
         key = 'live_pLbZvqWanhciL4RKR9IzPN0YcC1r6MUHzE2m5Rs3PxzlzZPyvo3hzJQ3HF12ne3G'
         url = 'https://api.thecatapi.com/v1/images/search'
 
@@ -79,19 +79,13 @@ class Catapi(View):
             html = response.json()
             image = html[0]['url']
 
-        except requests.Timeout:
+        except requests.Timeout or requests.RequestException:
             return render(request, 'api/cat/cat.html', {
                 'error': 'Сервер с котиками не ответил вовремя 😿'
             })
 
-        except requests.RequestException as e:
-            print(f'Ошибка подключения: {str(e)}')
-            return render(request, 'api/cat/cat.html', {
-                'error': 'Не удалось подключиться к серверу котиков 😿'
-            })
-
         except Exception as e:
-            print(f'Ошибка: {str(e)}')
+            print(f'Общая ошибка: {str(e)}')
             image = None
 
         self.load(image)
@@ -100,24 +94,22 @@ class Catapi(View):
         })
 
     def load(self, link):
-        model = Catlink()
+        if link:
+            model = Catlink()
+            if not Catlink.objects.filter(link=link).exists():
+                model.link = link
+                model.published_date = timezone.now()
+                model.save()
 
-        if not Catlink.objects.filter(link=link).exists():
-            model.link = link
-            model.published_date = timezone.now()
-
-            model.save()
+    def limit(self, request):
+        return render(request, 'api/cat/cat_limit.html')
 
 class CatHistory(View):
     def get(self, request):
         all_image = Catlink.objects.all()
 
-
         return render(request, 'api/cat/history.html', {
             'image': all_image
         })
-
-
-
 
 
