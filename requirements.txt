@@ -1,4 +1,4 @@
 Django~=3.2.25
 requests~=2.27.1
 djangorestframework~=3.14.0
-django-ratelimit~=3.0.1
+django-ratelimit~=3.0.0
