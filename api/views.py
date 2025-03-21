@@ -7,7 +7,8 @@ from django.shortcuts import render
 from django.views import View
 from .models import Catlink
 from django.utils import timezone
-from django_ratelimit.decorators import ratelimit
+#from django_ratelimit.decorators import ratelimit
+from ratelimit.decorators import ratelimit
 
 from django.utils.decorators import method_decorator
 import requests
