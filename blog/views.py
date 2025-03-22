@@ -1,11 +1,5 @@
-from distutils.command.register import register
-
-from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from requests import request
-
 from .models import Post, Answer
-from django.contrib.auth.models import User
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .forms import PostForm, AnswerForm

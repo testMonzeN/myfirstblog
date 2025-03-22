@@ -1,8 +1,5 @@
-from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
-from django.utils import timezone
-from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages

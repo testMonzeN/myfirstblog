@@ -1,5 +1,4 @@
 from django.template.loader import render_to_string
-
 from .models import Taskjs, Decisionjs, Taskpy, Decisionpy
 from django.core.paginator import Paginator
 from django.utils import timezone
@@ -165,6 +164,7 @@ def js_task_list(request):
 
 def js_task_detail(request, pk):
     task = get_object_or_404(Taskjs, pk=pk)
+
     decisions = Decisionjs.objects.filter(task=task)
     return render(request, 'stepik/js/js_task_detail.html',
                   {
