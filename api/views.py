@@ -1,5 +1,4 @@
 from django.db.models.functions import Trunc
-from django_ratelimit.exceptions import Ratelimited
 from rest_framework import serializers
 from blog.models import Post
 from stepik.models import Taskpy, Taskjs
@@ -91,7 +90,7 @@ class Catapi(View):
                 'error': 'Сервер с котэками не ответил вовремя 😿'
             })
 
-        except Ratelimited:
+        except:
             print(f'Общая ошибка: {str(e)}')
             image = None
 
