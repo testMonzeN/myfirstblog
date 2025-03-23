@@ -90,7 +90,7 @@ class Catapi(View):
                 'error': 'Сервер с котэками не ответил вовремя 😿'
             })
 
-        except:
+        except Exception as e:
             print(f'Общая ошибка: {str(e)}')
             image = None
 
