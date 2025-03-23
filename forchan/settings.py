@@ -143,5 +143,4 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
-
-RATELIMIT_VIEW = 'api.views.Catapi.limit'
+RATELIMIT_VIEW = 'api.views.rate_limit_view'

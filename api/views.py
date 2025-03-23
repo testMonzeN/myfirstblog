@@ -1,14 +1,16 @@
+from django.db.models.functions import Trunc
+from django_ratelimit.exceptions import Ratelimited
 from rest_framework import serializers
 from blog.models import Post
 from stepik.models import Taskpy, Taskjs
 from rest_framework import viewsets
 from django.contrib.auth import get_user_model
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .models import Catlink
 from django.utils import timezone
 from django_ratelimit.decorators import ratelimit
-
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 import requests
 
@@ -61,11 +63,14 @@ class TaskJsViewSet(viewsets.ModelViewSet):
 
 
 class Catapi(View):
-    @method_decorator(ratelimit(key='ip', rate='5/d', block=True))
-    def get(self, request):
-        if getattr(request, 'ratelimited', True):
-            return self.limit(request)
+    @method_decorator(ratelimit(key='user', rate='5/d', block=True))
+    def dispatch(self, request, *args, **kwargs):
+        if not getattr(request, 'ratelimited', True):
+            return render(request, 'api/cat/cat.html', {'ratelimited': True})
+        return super().dispatch(request, *args, **kwargs)
 
+
+    def get(self, request):
         key = 'live_pLbZvqWanhciL4RKR9IzPN0YcC1r6MUHzE2m5Rs3PxzlzZPyvo3hzJQ3HF12ne3G'
         url = 'https://api.thecatapi.com/v1/images/search'
 
@@ -80,30 +85,29 @@ class Catapi(View):
             html = response.json()
             image = html[0]['url']
 
-        except requests.Timeout or requests.RequestException:
+        except (requests.Timeout, requests.RequestException):
             return render(request, 'api/cat/cat.html', {
-                'error': 'Сервер с котиками не ответил вовремя 😿'
+                'ratelimited': False,
+                'error': 'Сервер с котэками не ответил вовремя 😿'
             })
 
-        except Exception as e:
+        except Ratelimited:
             print(f'Общая ошибка: {str(e)}')
             image = None
 
         self.load(image)
         return render(request, 'api/cat/cat.html', {
+            'ratelimited': False,
             'image': image
         })
 
     def load(self, link):
-        if link:
-            model = Catlink()
-            if not Catlink.objects.filter(link=link).exists():
-                model.link = link
-                model.published_date = timezone.now()
-                model.save()
+        model = Catlink()
+        if not Catlink.objects.filter(link=link).exists():
+            model.link = link
+            model.published_date = timezone.now()
+            model.save()
 
-    def limit(self, request):
-        return render(request, 'api/cat/cat_limit.html')
 
 class CatHistory(View):
     def get(self, request):
@@ -112,5 +116,8 @@ class CatHistory(View):
         return render(request, 'api/cat/history.html', {
             'image': all_image
         })
+
+
+
 
 

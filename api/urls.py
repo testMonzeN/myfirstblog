@@ -12,5 +12,5 @@ router.register(r'TaskJs', TaskJsViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('cat/', Catapi.as_view(), name='cat'),
-    path('hist/',  CatHistory.as_view(), name='hist')
+    path('hist/',  CatHistory.as_view(), name='hist'),
 ]
