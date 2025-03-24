@@ -1,4 +1,5 @@
-.cat-container {
+.cat-container,
+.dog-container {
     min-height: 80vh;
     display: flex;
     flex-direction: column;
@@ -8,7 +9,8 @@
     padding: 2rem;
 }
 
-.cat-image {
+.dog-image,
+.cat-image  {
     max-width: 80%;
     height: auto;
     border-radius: 15px;
@@ -17,17 +19,20 @@
     transition: opacity 0.5s ease;
 }
 
-.cat-image.loading {
+.cat-image.loading,
+.dog-image.loading {
     opacity: 0.5;
 }
 
-#refresh-cat {
+#refresh-cat,
+#refresh-dog {
     font-size: 1.5rem;
     padding: 1rem 2rem;
     transition: transform 0.2s ease;
 }
 
-#refresh-cat:hover {
+#refresh-cat:hover,
+#refresh-dog:hover {
     transform: scale(1.05);
 }
 

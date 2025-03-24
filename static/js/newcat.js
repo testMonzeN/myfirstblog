@@ -17,3 +17,4 @@ document.getElementById('refresh-cat').addEventListener('click', async () => {
         console.log('Ошибка при загрузке котика:', error);
     }
 });
+
