@@ -1,10 +1,13 @@
+from django.core.paginator import Paginator
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 from django_ratelimit.core import is_ratelimited
 from rest_framework import serializers
 from blog.models import Post
 from stepik.models import Taskpy, Taskjs
 from rest_framework import viewsets
 from django.contrib.auth import get_user_model
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .models import Catlink, Doglink
 from django.utils import timezone
@@ -58,13 +61,17 @@ class TaskJsViewSet(viewsets.ModelViewSet):
     serializer_class = TaskJsSerializer
 
 
+
 class Catapi(View):
     ratelimited = False
+
     def dispatch(self, request, *args, **kwargs):
-        self.ratelimited = is_ratelimited(request=request, group='CatLimit', fn=None,
-                                          key='user', rate='5/d', method='get',
-                                          increment=True)
-        return super().dispatch(request, *args, **kwargs)
+        if request.user.is_authenticated:
+            self.ratelimited = is_ratelimited(request=request, group='CatLimit', fn=None,
+                                              key='user', rate='5/d', method='get',
+                                              increment=True)
+            return super().dispatch(request, *args, **kwargs)
+        else: return redirect('sing_in')
 
 
     def get(self, request):
@@ -113,21 +120,59 @@ class Catapi(View):
 
 class CatHistory(View):
     def get(self, request):
-        all_image = Catlink.objects.all()
+        object_list = Catlink.objects.all()
+        paginator = Paginator(object_list, 9)
+
+        page_number = request.GET.get('page')
+        all_image = paginator.get_page(page_number)
 
         return render(request, 'api/cat/history.html', {
-            'images': all_image
+            'images': all_image,
+
+            'page_next': all_image.next_page_number() if all_image.has_next() else None,
+            'page_previous': all_image.previous_page_number() if all_image.has_previous() else None,
+            'page_current': all_image.number,
+            'page_end': all_image.paginator.num_pages,
+            'page_has_next': all_image.has_next,
+            'page_has_previous': all_image.has_previous,
         })
 
+class CatHistoryAjax(View):
+    def get(self, request):
+        object_list = Catlink.objects.all()
+        paginator = Paginator(object_list, 9)
+
+        page_number = request.GET.get('page')
+        all_image = paginator.get_page(page_number)
+
+        html = render_to_string('api/cat/images.html', {
+            'images': all_image
+        }, request=request)
+
+        pag = render_to_string('api/cat/pag.html', {
+            'page_next': all_image.next_page_number() if all_image.has_next() else None,
+            'page_previous': all_image.previous_page_number() if all_image.has_previous() else None,
+            'page_current': all_image.number,
+            'page_end': all_image.paginator.num_pages,
+            'page_has_next': all_image.has_next,
+            'page_has_previous': all_image.has_previous
+        }, request=request)
+
+        return JsonResponse({
+            'html': html,
+            'paginator': pag,
+        })
 
 
 class DogApi(View):
     ratelimited = False
     def dispatch(self, request, *args, **kwargs):
-        self.ratelimited = is_ratelimited(request=request, group='DogLimit', fn=None,
-                                          key='user', rate='5/d', method='get',
-                                          increment=True)
-        return super().dispatch(request, *args, **kwargs)
+        if request.user.is_authenticated:
+            self.ratelimited = is_ratelimited(request=request, group='DogLimit', fn=None,
+                                              key='user', rate='5/d', method='get',
+                                              increment=True)
+            return super().dispatch(request, *args, **kwargs)
+        else: return redirect('sing_in')
 
 
     def get(self, request):
@@ -172,13 +217,51 @@ class DogApi(View):
             model.published_date = timezone.now()
             model.save()
 
-
 class DogHistory(View):
+
     def get(self, request):
-        all_image = Doglink.objects.all()
+        object_list = Doglink.objects.all()
+        paginator = Paginator(object_list, 9)
+
+        page_number = request.GET.get('page')
+        all_image = paginator.get_page(page_number)
 
         return render(request, 'api/dog/history.html', {
+            'images': all_image,
+
+            'page_next': all_image.next_page_number() if all_image.has_next() else None,
+            'page_previous': all_image.previous_page_number() if all_image.has_previous() else None,
+            'page_current': all_image.number,
+            'page_end': all_image.paginator.num_pages,
+            'page_has_next': all_image.has_next,
+            'page_has_previous': all_image.has_previous,
+        })
+
+
+class DogHistoryAjax(View):
+    def get(self, request):
+        object_list = Doglink.objects.all()
+        paginator = Paginator(object_list, 9)
+
+        page_number = request.GET.get('page')
+        all_image = paginator.get_page(page_number)
+
+        html = render_to_string('api/dog/images.html', {
             'images': all_image
+        }, request=request)
+
+        pag = render_to_string('api/dog/pag.html', {
+            'page_next': all_image.next_page_number() if all_image.has_next() else None,
+            'page_previous': all_image.previous_page_number() if all_image.has_previous() else None,
+            'page_current': all_image.number,
+            'page_end': all_image.paginator.num_pages,
+            'page_has_next': all_image.has_next,
+            'page_has_previous': all_image.has_previous
+        }, request=request)
+
+        return JsonResponse({
+            'html': html,
+            'paginator': pag,
         })
 
 

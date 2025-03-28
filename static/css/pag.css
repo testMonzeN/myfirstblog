@@ -1,3 +1,5 @@
+.cat-pag,
+.dog-pag,
 .step-links,
 .search-pag,
 .py-step-links,
@@ -14,6 +16,8 @@
     margin-bottom: 20px;
 }
 
+.dog-pag:hover,
+.cat-pag:hover,
 .step-links:hover,
 .search-pag:hover,
 .py-step-links:hover,
@@ -32,10 +36,14 @@
     gap: 12px;
 }
 
+.dog-pag-button,
+.cat-pag-button,
 .pag-button,
 .pagg-button,
 .stepik-pag-js-button,
-.blog-pag-button {
+.blog-pag-button,
+.dog-pag-button,
+.cat-pag-button {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
@@ -46,18 +54,26 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.dog-pag-button:hover,
+.cat-pag-button:hover,
 .pag-button:hover,
 .pagg-button:hover,
 .stepik-pag-js-button:hover,
-.blog-pag-button:hover {
+.blog-pag-button:hover,
+.dog-pag-button:hover,
+.cat-pag-button:hover {
     background-color: #8e24aa;
     transform: translateY(-2px);
 }
 
+.dog-pag-button:active,
+.cat-pag-button:active,
 .pag-button:active,
 .pagg-button:active,
 .stepik-pag-js-button:active,
-.blog-pag-button:active {
+.blog-pag-button:active,
+.dog-pag-button:active,
+.cat-pag-button:active {
     transform: translateY(0);
 }
 

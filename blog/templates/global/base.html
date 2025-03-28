@@ -29,7 +29,11 @@
         </div>
         <ul class="nav-links">
             <li><a href="{% url 'cards' %}"><i class="fa-solid fa-house"></i> ГЛАВНАЯ</a></li>
-            <li><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> ВЫЙТИ</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> ВЫЙТИ</a></li>
+            {% else %}
+                <li><a href="{% url 'sing_in' %}"><i class="fa-solid fa-right-to-bracket"></i> ВХОД</a></li>
+            {% endif %}
         </ul>
     </nav>
 </div>
@@ -49,6 +53,7 @@
 <script src="{% static 'js/stepik_search_py.js' %}"></script>
 <script src="{% static 'js/stepik_search_js.js' %}"></script>
 <script src="{% static 'js/newcat.js' %}"></script>
-<script src="{% static 'js/newdog.js' %}"></script>
+<script src="{% static 'js/dog.js' %}"></script>
+<script src="{% static 'js/cat.js' %}"></script>
 </body>
 </html>
