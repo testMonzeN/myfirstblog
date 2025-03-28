@@ -28,3 +28,15 @@
     padding: 0.5rem 1rem;
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+.alert-warning {
+    max-width: 500px;
+    margin: 2rem auto;
+    border-radius: 10px;
+}
+.card-img-top {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}

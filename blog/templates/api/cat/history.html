@@ -3,31 +3,25 @@
 {% block content %}
 <div class="container mt-4">
     {% if images %}
-    <div id="catCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            {% for image in images %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ image.link }}" class="d-block w-100" alt="Cat image {{ forloop.counter }}">
+    <div class="row g-3">
+        {% for image in images %}
+        <div class="col-md-4 col-sm-6">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ image.link }}" 
+                     class="card-img-top img-fluid" 
+                     alt="Cat image {{ forloop.counter }}"
+                     style="height: 250px; object-fit: cover;"
+                     onerror="this.src='https://via.placeholder.com/500x300?text=Cat+Image+Not+Found'">
             </div>
-            {% endfor %}
         </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#catCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#catCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        {% endfor %}
     </div>
     {% else %}
-    <div class="alert alert-warning">
-        Нэту котэка
+    <div class="alert alert-warning text-center py-4">
+        <i class="fas fa-Cat me-2"></i>
+        Нэту котэка 😿
+        <p class="mt-2 mb-0 small">Попробуйте загрузить изображения позже</p>
     </div>
     {% endif %}
 </div>
 {% endblock %}
-
-
-
