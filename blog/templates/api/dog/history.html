@@ -1,39 +1,39 @@
 {% extends 'global/base.html' %}
 
 {% block content %}
-<div class="cat-container text-center py-5">
-    <div class="container-md">
-        {% if image %}
-          {% for item in image %}
-        <div class="cat-card mx-auto">
-            <div class="image-wrapper position-relative overflow-hidden rounded-4 shadow-lg">
-                <img src="{{ item }}"
-                     class="cat-image img-fluid"
-                     alt="Случайный котик"
-                     loading="lazy"
-                     onload="this.style.opacity = 1"
-                     style="opacity: 0; transition: opacity 0.3s ease-in-out">
-                <div class="hover-overlay"></div>
+<div class="container mt-4">
+    {% if images %}
+    <div id="dogCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for image in images %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ image.link }}"
+                     class="d-block w-100"
+                     alt="Dog image {{ forloop.counter }}"
+                     onerror="this.src='https://via.placeholder.com/800x500?text=Dog+Image+Not+Found'">
             </div>
-        </div>
             {% endfor %}
-        {% else %}
-        <div class="error-card mx-auto">
-            <div class="alert alert-danger error-message fade-in" role="alert">
-                <i class="bi bi-emoji-frown me-2"></i>
-                Ой! Нету песиков 😥<br>Попробуй ещё раз!
-            </div>
         </div>
-        {% endif %}
 
-        <div class="actions mt-4">
-            <a href="{% url 'dog' %}"
-               class="btn btn-gradient-primary btn-lg px-5 py-3">
-                <i class="bi bi-arrow-clockwise me-2"></i>
-                Показать ещё
-            </a>
-        </div>
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#dogCarousel"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#dogCarousel"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+    {% else %}
+    <div class="alert alert-warning text-center">
+        Нэту песика 🐕
+    </div>
+    {% endif %}
 </div>
-
 {% endblock %}

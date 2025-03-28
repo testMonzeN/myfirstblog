@@ -2,12 +2,11 @@ from django.template.loader import render_to_string
 from .models import Taskjs, Decisionjs, Taskpy, Decisionpy
 from django.core.paginator import Paginator
 from django.utils import timezone
-from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from .form import DecisionForm, DecisionFormJs
 import requests, re
 from django.http import JsonResponse
-from forchan.urls import *
-from django.contrib.auth.models import User
+
 
 def main(request):
     return render(request, 'stepik/index.html', {

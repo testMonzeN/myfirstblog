@@ -41,3 +41,47 @@
     color: #dc3545;
     margin: 2rem 0;
 }
+
+.carousel {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.carousel-item {
+    height: 500px;
+    background-color: #f0f0f0;
+}
+.carousel-item img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+#dogCarousel {
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.carousel-item {
+    height: 500px;
+    background-color: #f8f9fa;
+}
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.alert-warning {
+    font-size: 1.2rem;
+    padding: 1.5rem;
+}

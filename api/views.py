@@ -1,17 +1,13 @@
-from django.db.models.functions import Trunc
 from django_ratelimit.core import is_ratelimited
 from rest_framework import serializers
 from blog.models import Post
 from stepik.models import Taskpy, Taskjs
 from rest_framework import viewsets
 from django.contrib.auth import get_user_model
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import View
 from .models import Catlink, Doglink
 from django.utils import timezone
-from django_ratelimit.decorators import ratelimit
-from django.urls import reverse
-from django.utils.decorators import method_decorator
 import requests
 
 User = get_user_model()
@@ -114,13 +110,15 @@ class Catapi(View):
             model.save()
 
 
+
 class CatHistory(View):
     def get(self, request):
         all_image = Catlink.objects.all()
 
         return render(request, 'api/cat/history.html', {
-            'image': all_image
+            'images': all_image
         })
+
 
 
 class DogApi(View):
@@ -155,7 +153,7 @@ class DogApi(View):
         except (requests.Timeout, requests.RequestException):
             return render(request, 'api/dog/dog.html', {
                 'ratelimited': False,
-                'error': 'Сервер с котэками не ответил вовремя 😿'
+                'error': 'Сервер с песиками не ответил вовремя 🐓'
             })
 
         except Exception as e:
@@ -180,7 +178,7 @@ class DogHistory(View):
         all_image = Doglink.objects.all()
 
         return render(request, 'api/dog/history.html', {
-            'image': all_image
+            'images': all_image
         })
 
 
