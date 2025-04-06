@@ -1,6 +1,6 @@
 document.getElementById('refresh-cat').addEventListener('click', async () => {
     try {
-        const response = await fetch('/api/cat/');
+        const response = await fetch('/animals/cat/');
         const html = await response.text();
         const contentBlock = document.querySelector('.cat-container > :first-child');
         const newContent = new DOMParser()

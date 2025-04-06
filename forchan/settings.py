@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'users',
     'search',
     'api',
+    'animals',
 ]
 
 REST_FRAMEWORK = {

@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function loadCatPage(page) {
         try {
-            const response = await fetch(`/api/cat_hist/ajax/?page=${page}`, {
+            const response = await fetch(`/animals/cat_hist/ajax/?page=${page}`, {
                 headers: {
                     'X-Requested-With': 'XMLHttpRequest',
                     'Accept': 'application/json'

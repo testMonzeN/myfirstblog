@@ -1,6 +1,6 @@
 document.getElementById('refresh-dog').addEventListener('click', async () => {
     try {
-        const response = await fetch('/api/dog/');
+        const response = await fetch('/animals/dog/');
         const html = await response.text();
         const contentBlock = document.querySelector('.dog-container > :first-child');
         const newContent = new DOMParser()

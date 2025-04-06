@@ -25,6 +25,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('stepik/', include('stepik.urls')),
     path('api/', include('api.urls')),
+    path('animals/', include('animals.urls')),
     path('', include('cards.urls')),
-    path('', include('users.urls'))
+    path('', include('users.urls')),
 ]
