@@ -30,3 +30,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     addPaginationEventListeners();
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('calc-form');
+    const results = document.getElementById('calc-results');
+    form.addEventListener('submit', function() {
+        setTimeout(function() {
+            results.style.display = 'block';
+            results.classList.remove('animate__fadeOutDown');
+            results.classList.add('animate__fadeInUp');
+        }, 200);
+    });
+});

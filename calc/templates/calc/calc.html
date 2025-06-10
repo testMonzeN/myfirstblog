@@ -1,0 +1,71 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 animate__animated animate__fadeInDown">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4" style="font-family: cursive; letter-spacing: 1px;">КАЛЬКУЛЯТОР ВЫЧИСЛЕНИЯ ОЧКОВ ЗА ПОПАДАНИЕ В КЛАССИЧЕСКОМ СНАЙПИНГЕ</h2>
+                    <form method="post" id="calc-form">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_target" class="form-label fs-4 fw-bold">Размер мишени (см)</label>
+                            <input type="number" step="any" class="form-control" id="id_target" name="target" value="{{ target|default:'' }}" style="border: 2px solid black; border-radius: 5px; width: 100px; height: 25px;" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_dist" class="form-label fs-4 fw-bold">Дистанция до мишени (м)</label>
+                            <input type="number" step="any" class="form-control" id="id_dist" name="dist" value="{{ dist|default:'' }}" style="border: 2px solid black; border-radius: 5px; width: 100px; height: 25px;" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">Рассчитать</button>
+                        </div>
+                    </form>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2" >
+                            <button type="submit" name="clear" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">Отчистить</button>
+                        </div>
+                    </form>
+                    <hr>
+                    {% if recent_tables %}
+                    <div id="calc-results" class="mt-4 animate__animated animate__fadeInUp">
+                        <h4 class="mb-3 text-center">Результаты:</h4>
+                        <table class="table table-bordered text-center align-middle" style="border: 2px solid black; border-radius: 5px;">
+                            <thead>
+                                <tr>
+                                    <th style="border: 2px solid black; border-radius: 5px;">№</th>
+                                    <th style="border: 2px solid black; border-radius: 5px;">Мишень (см)</th>
+                                    <th style="border: 2px solid black; border-radius: 5px;">Мишень (мрад)</th>
+                                    <th style="border: 2px solid black; border-radius: 5px;">Дистанция (м)</th>
+                                    <th style="border: 2px solid black; border-radius: 5px;">1-й выстрел</th>
+                                    <th style="border: 2px solid black; border-radius: 5px;">2-й выстрел</th>
+                                    <th style="border: 2px solid black; border-radius: 5px;">3-й выстрел</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in recent_tables %}
+                                <tr style="border: 2px solid black; border-radius: 5px;">
+                                    <td style="border: 2px solid black; border-radius: 5px;">{{ forloop.counter }}</td>
+
+                                    <td style="border: 2px solid black; border-radius: 5px;">{{ item.table.target }}</td>
+                                    <td style="border: 2px solid black; border-radius: 5px;">{{ item.table.mrad }}</td>
+                                    <td style="border: 2px solid black; border-radius: 5px;">{{ item.table.dist }}</td>
+                                    <td style="border: 2px solid black; border-radius: 5px;"><b>{{ item.table.first_try }}</b></td>
+                                    <td style="border: 2px solid black; border-radius: 5px;"><b>{{ item.table.second_try }}</b></td>
+                                    <td style="border: 2px solid black; border-radius: 5px;"><b>{{ item.table.third_try }}</b></td>
+                                    
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
