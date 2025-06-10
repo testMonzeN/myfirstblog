@@ -39,9 +39,17 @@ class Calculator():
             return 0
 
 class CalculatorView(View):
+    def get_client_ip(self, request):
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0].strip()
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        return ip 
+
     def get(self, request):
         form = CalculatorForm()
-        current_ip = request.META.get('REMOTE_ADDR')
+        current_ip = self.get_client_ip(request)
         recent_tables = TableIpAddressSort.objects.filter(ip=current_ip).order_by('-id')
 
         return render(request, 'calc/calc.html', {'form': form,
@@ -50,13 +58,13 @@ class CalculatorView(View):
     def post(self, request):
         if 'clear' in request.POST:
             form = CalculatorForm()
-            current_ip = request.META.get('REMOTE_ADDR')
+            current_ip = self.get_client_ip(request)
             TableIpAddressSort.objects.filter(ip=current_ip).delete()
             recent_tables = []
             return render(request, 'calc/calc.html', {'form': form,
                                                   'recent_tables': recent_tables})
         
-        
+
         form = CalculatorForm(request.POST)
         if form.is_valid():
             target = form.cleaned_data['target']
@@ -64,7 +72,7 @@ class CalculatorView(View):
             calculator = Calculator(target, dist)
 
 
-            current_ip = request.META.get('REMOTE_ADDR')
+            current_ip = self.get_client_ip(request)
 
             table = Table()
             table.target = target
