@@ -13,7 +13,7 @@ class Table(models.Model):
 
 
 class TableIpAddressSort(models.Model):
-    ip = models.GenericIPAddressField(null=True)
+    ip = models.CharField(max_length=100)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
 
 
