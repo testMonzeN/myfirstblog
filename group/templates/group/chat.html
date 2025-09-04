@@ -1,0 +1,85 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid chat-container">
+    <div class="row">
+        <div class="col-12">
+            <!-- Заголовок чата -->
+            <div class="chat-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2><i class="fas fa-comments"></i> {{ group.name }}</h2>
+                        <small class="text-muted">
+                            <i class="fas fa-users"></i> {{ group.get_user_count }} участник{{ group.get_user_count|pluralize:"ов" }} 
+                        </small>
+                    </div>
+                    <a href="{% url 'group_list' %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> К списку комнат
+                    </a>
+                </div>
+            </div>
+
+            <!-- Область сообщений -->
+            <div class="chat-messages" id="chat-messages">
+                {% for message in messages %}
+                    <div class="message {% if message.author == request.user %}message-own{% endif %}" data-message-id="{{ message.id }}">
+                        <div class="message-header">
+                            <strong class="message-author">{{ message.get_author }}</strong>
+                            <small class="message-time">{{ message.date_create|date:"H:i" }}</small>
+                        </div>
+                        <div class="message-content">
+                            {% if message.img %}
+                                <img src="{{ message.img.url }}" alt="Изображение" class="message-image" onclick="openImageModal(this.src)" data-message-id="{{ message.id }}">
+                            {% endif %}
+                            {% if message.text %}
+                                {{ message.text }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div id="room-name" data-room-name="{{ room_name }}" style="display: none;"></div>
+            <div id="user-name" data-user-name="{{ request.user.username }}" style="display: none;"></div>
+
+            <!-- Форма отправки сообщения -->
+            <div class="chat-input">
+                <div class="input-group">
+                    <input type="text" id="chat-message-input" class="form-control" 
+                           placeholder="Мур-мур-мур (*^▽^*)" maxlength="255">
+                    <input type="file" id="image-input" accept="image/*" style="display: none;">
+                    <button class="btn btn-outline-primary" id="image-upload-btn" title="Отправить изображение">
+                        <i class="fas fa-image"></i>
+                    </button>
+                    <button class="btn btn-primary" id="chat-message-submit">
+                        <i class="fas fa-paper-plane"></i> Отправить
+                    </button>
+                </div>
+                <div id="image-preview" style="display: none;">
+                    <img id="preview-img" src="" alt="Предпросмотр" style="max-width: 200px; max-height: 200px;">
+                    <button id="cancel-image" class="btn btn-sm btn-danger">Отменить</button>
+                    <button id="send-image" class="btn btn-sm btn-success">Отправить фото</button>
+                </div>
+            </div>
+
+            <!-- Модальное окно для просмотра изображений -->
+            <div class="modal fade" id="imageModal" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Изображение</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img id="modal-image" src="" alt="Изображение" style="max-width: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/chat.js' %}"></script>
+{% endblock %}

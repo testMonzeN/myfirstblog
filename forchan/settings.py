@@ -34,6 +34,8 @@ ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'search',
     'api',
     'animals',
+    'group',
 ]
 
 REST_FRAMEWORK = {
@@ -142,6 +145,35 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
+# Media files (uploads)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 RATELIMIT_VIEW = 'api.views.rate_limit_view'
+
+#chat
+ASGI_APPLICATION = 'forchan.asgi.application'
+
+# Попытка использовать Redis, если не получается - используем InMemoryChannelLayer
+try:
+    import redis
+    redis_client = redis.Redis(host='127.0.0.1', port=6379, db=0)
+    redis_client.ping()
+    
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                "hosts": [('127.0.0.1', 6379)],
+            },
+        },
+    }
+except:
+    # Fallback на InMemoryChannelLayer (только для разработки)
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        },
+    }

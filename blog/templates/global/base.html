@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/stepik_post_answer.css' %}">
     <link rel="stylesheet" href="{% static 'css/post_list.css' %}">
     <link rel="stylesheet" href="{% static 'css/cards.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
 </head>
 <body>
 
@@ -29,6 +30,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="{% url 'cards' %}"><i class="fa-solid fa-house"></i> ГЛАВНАЯ</a></li>
+            <li><a href="{% url 'group_list' %}"><i class="fa-solid fa-comments"></i> ЧАТ</a></li>
             {% if request.user.is_authenticated %}
                 <li><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> ВЫЙТИ</a></li>
             {% else %}
@@ -55,5 +57,6 @@
 <script src="{% static 'js/newcat.js' %}"></script>
 <script src="{% static 'js/dog.js' %}"></script>
 <script src="{% static 'js/cat.js' %}"></script>
+<script src="{% static 'js/chat.js' %}"></script>
 </body>
 </html>
