@@ -4,3 +4,4 @@ djangorestframework
 django-ratelimit
 channels
 channels-redis
+daphne
