@@ -2,5 +2,5 @@ Django
 requests
 djangorestframework
 django-ratelimit
-channels["daphne"] 
+channels
 channels-redis
