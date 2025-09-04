@@ -5,3 +5,4 @@ django-ratelimit
 channels
 channels-redis
 daphne
+Pillow
