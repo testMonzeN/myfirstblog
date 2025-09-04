@@ -1,8 +1,9 @@
-Django
-requests
-djangorestframework
-django-ratelimit
-channels
-channels-redis
-daphne
-Pillow
+Django>=5.0.7
+requests>=2.31.0
+djangorestframework>=3.14.0
+django-ratelimit>=4.1.0
+channels>=4.0.0
+channels-redis>=4.1.0
+daphne>=4.0.0
+Pillow>=10.0.0
+redis>=5.0.0
