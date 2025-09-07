@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <a
+        href="{% url 'cat' %}"
+        class="btn btn-primary btn-lg"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top">
+        ЗАГРУЗИТЬ БОЛЬШЕ
+    </a>
+    {% if images %}
+    <div class="row g-3">
+        {% for image in images %}
+        <div class="col-md-4 col-sm-6">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ image.link }}"
+                     class="card-img-top img-fluid"
+                     alt="Cat image {{ forloop.counter }}"
+                     style="height: 250px; object-fit: cover;"
+                     onerror="this.src='https://via.placeholder.com/500x300?text=Cat+Image+Not+Found'">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-warning text-center py-4">
+        <i class="fas fa-Cat me-2"></i>
+        Нэту котэка 😿
+        <p class="mt-2 mb-0 small">Попробуйте загрузить изображения позже</p>
+    </div>
+    {% endif %}
+</div>

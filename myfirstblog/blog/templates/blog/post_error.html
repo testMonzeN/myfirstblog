@@ -1,0 +1,37 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'cards' %}">HOME</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'teleport_blog' %}">BLOG</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+    </ol>
+</nav>
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <a class="btn btn-default" href="{% url 'answer_new' %}"><span class="glyphicon glyphicon-pencil"></span> НАПИШИ СВОЕ МНЕНИЕ</a>
+    </div>
+
+    <h2>КОММЕНТАРИИ</h2>
+    {% for answer in answers %}
+        <div class="answer">
+            {% if answer.date_public %}
+                <div class="date">
+                    {{ answer.date_public}}
+                </div>
+            {% endif %}
+            <h3>{{ answer.author }}</h3>
+            <p>{{ answer.text|linebreaksbr }}</p>
+        </div>
+    {% empty %}
+        <h2>No comments here yet :(</h2>
+    {% endfor %}
+
+{% endblock %}

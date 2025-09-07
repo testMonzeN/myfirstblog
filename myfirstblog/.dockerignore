@@ -1,0 +1,82 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Статические файлы (будут собраны в контейнере)
+staticfiles/
+static/admin/
+static/rest_framework/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Временные файлы
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# Логи серверов
+*.log
+uwsgi.log
+gunicorn*.log
+
+# Конфигурационные файлы (не нужны в Docker)
+uwsgi*.ini
+gunicorn*.conf.py
+uvicorn*.json
+start_*.py
+server_manager.py
+
+# Документация
+*.md
+!README.md

@@ -1,0 +1,10 @@
+{% if page_has_previous %}
+    <div data-stepik="{{ page_previous }}" class="pagg pagg-button">ПРЕДЫДУЩАЯ СТРАНИЦА</div>
+{% endif %}
+
+<span class="pag-info">Страница {{ page_current }} из {{ page_end }}</span>
+
+{% if page_has_next %}
+    <div data-stepik="{{ page_next }}" class="pagg pagg-button">СЛЕДУЮЩАЯ СТРАНИЦА</div>
+{% endif %}
+

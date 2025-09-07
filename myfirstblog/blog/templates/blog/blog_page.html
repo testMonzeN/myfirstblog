@@ -1,0 +1,26 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'cards' %}">HOME</a></li>
+            <li class="breadcrumb-item active" aria-current="page">BLOG</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-12" id="post-container">
+            {% include 'blog/post_list.html' %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="step-links" id="blog-pagination-links">
+                {% include 'blog/pagination.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

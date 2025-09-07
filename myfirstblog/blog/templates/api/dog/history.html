@@ -1,0 +1,12 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+<div id="dog-images">
+    {% include 'api/dog/images.html' %}
+</div>
+
+<div id="dog-pagination">
+    {% include 'api/dog/pag.html' %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,140 @@
+version: '3.8'
+
+services:
+  # Redis для Django Channels
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    networks:
+      - app_network
+
+  # PostgreSQL база данных (опционально, вместо SQLite)
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: forchan
+      POSTGRES_USER: forchan_user
+      POSTGRES_PASSWORD: forchan_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+    profiles:
+      - postgres
+
+  # Django приложение с uWSGI
+  app-uwsgi:
+    build:
+      context: ./myfirstblog
+      dockerfile: Dockerfile.uwsgi
+    container_name: django_uwsgi
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=forchan.settings
+      - DJANGO_DEBUG=False
+    volumes:
+      - ./myfirstblog/media:/app/media
+      - static_volume:/app/staticfiles
+    depends_on:
+      - redis
+    networks:
+      - app_network
+    profiles:
+      - uwsgi
+
+  # Django приложение с Gunicorn
+  app-gunicorn:
+    build:
+      context: ./myfirstblog
+      dockerfile: Dockerfile.gunicorn
+    container_name: django_gunicorn
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=forchan.settings
+      - DJANGO_DEBUG=False
+    volumes:
+      - ./myfirstblog/media:/app/media
+      - static_volume:/app/staticfiles
+    depends_on:
+      - redis
+    networks:
+      - app_network
+    profiles:
+      - gunicorn
+
+  # Django приложение с Uvicorn
+  app-uvicorn:
+    build:
+      context: ./myfirstblog
+      dockerfile: Dockerfile.uvicorn
+    container_name: django_uvicorn
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=forchan.settings
+      - DJANGO_DEBUG=False
+    volumes:
+      - ./myfirstblog/media:/app/media
+      - static_volume:/app/staticfiles
+    depends_on:
+      - redis
+    networks:
+      - app_network
+    profiles:
+      - uvicorn
+
+  # Django приложение по умолчанию (основной Dockerfile с Uvicorn)
+  web:
+    build:
+      context: ./myfirstblog
+      dockerfile: Dockerfile
+    container_name: django_app
+    restart: unless-stopped
+    environment:
+      - DJANGO_SETTINGS_MODULE=forchan.settings
+      - DJANGO_DEBUG=False
+    volumes:
+      - ./myfirstblog/media:/app/media
+      - static_volume:/app/staticfiles
+    expose:
+      - 8000
+    depends_on:
+      - redis
+    networks:
+      - app_network
+
+  # Nginx прокси
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - static_volume:/app/staticfiles:ro
+      - ./myfirstblog/media:/app/media:ro
+    depends_on:
+      - web
+    networks:
+      - app_network
+    profiles:
+      - nginx
+
+volumes:
+  redis_data:
+  postgres_data:
+  static_volume:
+
+networks:
+  app_network:
+    driver: bridge 

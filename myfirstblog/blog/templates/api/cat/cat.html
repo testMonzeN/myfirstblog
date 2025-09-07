@@ -1,0 +1,40 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+<div class="cat-container">
+    {% if ratelimited %}
+        <div class="alert alert-danger error-message" role="alert">
+            Лимит котиков исчерпан! Приходи завтра 😿 (не более 5 в день)
+        </div>
+    {% else %}
+        {% if error %}
+            <div class="alert alert-danger error-message" role="alert">
+                {{ error }}
+            </div>
+        {% elif image %}
+            <img src="{{ image }}" class="cat-image img-fluid rounded shadow-lg" alt="Случайный котик">
+        {% else %}
+            <div class="alert alert-danger error-message" role="alert">
+                Ой! Нету котэка 😥. Попробуй ещё раз!
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <button
+        id="refresh-cat"
+        class="btn btn-primary btn-lg {% if ratelimited %}disabled{% endif %}"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top">
+        <i class="fa-solid fa-cat"></i>
+        ХАЧУ КОТЭКАААААААААААААААААААААААААА
+    </button>
+
+    <a
+        href="{% url 'cat_hist' %}"
+        class="btn btn-primary btn-lg"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top">
+        МНОГО КОТЭКОВ!!!!!!!!!!!!!!!!!!!!!!!!!
+    </a>
+</div>
+{% endblock %}

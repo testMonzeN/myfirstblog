@@ -1,0 +1,14 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+
+<div id="cat-images">
+    {% include 'api/cat/images.html' %}
+</div>
+
+<div id="cat-pagination">
+    {% include 'api/cat/pag.html' %}
+</div>
+
+
+{% endblock %}

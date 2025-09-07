@@ -1,0 +1,40 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+<div class="dog-container">
+    {% if ratelimited %}
+        <div class="alert alert-danger error-message" role="alert">
+            Лимит псин исчерпан! Приходи завтра (не более 5 в день)
+        </div>
+    {% else %}
+        {% if error %}
+            <div class="alert alert-danger error-message" role="alert">
+                {{ error }}
+            </div>
+        {% elif image %}
+            <img src="{{ image }}" class="dog-image img-fluid rounded shadow-lg" alt="Случайный песик">
+        {% else %}
+            <div class="alert alert-danger error-message" role="alert">
+                Ой! Нету песика 😥. Попробуй ещё раз!
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <button
+        id="refresh-dog"
+        class="btn btn-primary btn-lg {% if ratelimited %}disabled{% endif %}"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top">
+        <i class="fa-solid fa-dog"></i>
+        ХАЧУ ПЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕСИКА
+    </button>
+
+    <a
+        href="{% url 'dog_hist' %}"
+        class="btn btn-primary btn-lg"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top">
+        МНОГО ПЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕСИКОВ!!!!!!!!!!!!!!!!!!!!!!!!!
+    </a>
+</div>
+{% endblock %}

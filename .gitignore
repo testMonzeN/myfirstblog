@@ -1,0 +1,6 @@
+venv/
+test.py
+__pycache__/
+.idea
+.git
+README.md

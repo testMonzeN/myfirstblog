@@ -1,0 +1,37 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'cards' %}">HOME</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'teleport_stepik' %}">STEPIK</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'py_task_list' %}">PYTHON</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ task.title }}</li>
+        </ol>
+      </nav>
+    <div class="task">
+        <div class="date">
+            {{ task.published_date }}
+        </div>
+        <h1><a href="{% url 'py_task_detail' pk=task.pk %}">{{ task.title }}</a></h1>
+        <p>{{ task.text|linebreaksbr }}</p>
+
+        <a class="btn btn-default" href="{% url 'answer_new' %}"><span class="glyphicon glyphicon-pencil"></span> НАПИШИ СВОЕ МНЕНИЕ</a>
+
+    </div>
+    <h2>КОММЕНТАРИИ</h2>
+
+    {% for decision in decisions %}
+        <div class="decision">
+            {% if decision.published_date %}
+                <div class="date">
+                    {{ decision.published_date}}
+                </div>
+            {% endif %}
+            <h3>{{ decision.author }}</h3>
+            <p>{{ decision.text|linebreaksbr }}</p>
+        </div>
+    {% empty %}
+        <h2>No comments here yet :(</h2>
+    {% endfor %}
+{% endblock %}

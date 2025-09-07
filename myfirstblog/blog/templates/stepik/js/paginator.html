@@ -1,0 +1,10 @@
+{% if page_has_previous %}
+    <div data-stepik-js="{{ page_previous }}" class="stepik-pag-js stepik-pag-js-button">ПРЕДЫДУЩАЯ СТРАНИЦА</div>
+{% endif %}
+
+<span class="pag-info">Страница {{ page_current }} из {{ page_end }}</span>
+
+{% if page_has_next %}
+    <div data-stepik-js="{{ page_next }}" class="stepik-pag-js stepik-pag-js-button">СЛЕДУЮЩАЯ СТРАНИЦА</div>
+{% endif %}
+

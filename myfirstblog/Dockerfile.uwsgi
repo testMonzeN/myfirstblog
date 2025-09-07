@@ -1,0 +1,37 @@
+FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y \
+    gcc \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+RUN mkdir -p /app/staticfiles /app/media /var/log/uwsgi
+
+RUN python manage.py collectstatic --noinput
+
+RUN useradd --create-home --shell /bin/bash app && \
+    chown -R app:app /app /var/log/uwsgi
+USER app
+
+EXPOSE 8000
+
+CMD ["uwsgi", \
+     "--http", ":8000", \
+     "--module", "forchan.wsgi:application", \
+     "--master", \
+     "--processes", "4", \
+     "--threads", "2", \
+     "--max-requests", "5000", \
+     "--harakiri", "30", \
+     "--static-map", "/static=/app/staticfiles", \
+     "--static-map", "/media=/app/media", \
+     "--logto", "/var/log/uwsgi/app.log", \
+     "--vacuum", \
+     "--die-on-term"]

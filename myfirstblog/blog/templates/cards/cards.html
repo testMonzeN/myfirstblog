@@ -1,0 +1,50 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">HOME</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card h-100 shadow-sm p-4">
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title display-5 mb-3">ОБСУЖДЕНИЕ</h2>
+                    <p class="card-text fs-2 mb-4">
+                        Здесь вы найдете ответы на важные вопросы, связанные с разработкой, карьерой и технологиями.
+                        Присоединяйтесь к обсуждениям и делитесь своим опытом!
+                    </p>
+                    <div class="mt-auto">
+                        <div class="d-flex gap-2">
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'post_new' %}" class="btn btn-primary btn-lg">Создать пост</a>
+                            {% endif %}
+                            <a href="{% url 'teleport_blog' %}" class="btn btn-primary btn-lg">Go!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mb-4">
+            <div class="card h-100 shadow-sm p-4">
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title display-5 mb-3">ОТВЕТЫ ПО КУРСАМ ОТ STEPIK</h2>
+                    <p class="card-text fs-2 mb-4">
+                        Решения задач и ответы на вопросы по курсам Stepik.
+                        Учебные материалы и полезные ресурсы для студентов и разработчиков.
+                    </p>
+                    <div class="mt-auto">
+                        <div class="d-flex gap-2">
+                            <a href="{% url 'teleport_stepik' %}" class="btn btn-primary btn-lg">Go!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

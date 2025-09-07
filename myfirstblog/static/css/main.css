@@ -1,0 +1,87 @@
+.cat-container,
+.dog-container {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.dog-image,
+.cat-image  {
+    max-width: 80%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin: 2rem 0;
+    transition: opacity 0.5s ease;
+}
+
+.cat-image.loading,
+.dog-image.loading {
+    opacity: 0.5;
+}
+
+#refresh-cat,
+#refresh-dog {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    transition: transform 0.2s ease;
+}
+
+#refresh-cat:hover,
+#refresh-dog:hover {
+    transform: scale(1.05);
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: #dc3545;
+    margin: 2rem 0;
+}
+
+.carousel {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.carousel-item {
+    height: 500px;
+    background-color: #f0f0f0;
+}
+.carousel-item img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+#dogCarousel {
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.carousel-item {
+    height: 500px;
+    background-color: #f8f9fa;
+}
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.alert-warning {
+    font-size: 1.2rem;
+    padding: 1.5rem;
+}
